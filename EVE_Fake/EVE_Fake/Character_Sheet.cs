@@ -28,7 +28,9 @@ namespace EVE_Fake
             //string in Form augeben
             tbxCharName.Text = Name;
             tbxMoney.Text = Wert;
-            tbxRaumschiff.Text = Raumschiff; 
+            tbxRaumschiff.Text = Raumschiff;
+
+            sr.Close();
         }
 
         private void tbxCharName_TextChanged(object sender, EventArgs e)

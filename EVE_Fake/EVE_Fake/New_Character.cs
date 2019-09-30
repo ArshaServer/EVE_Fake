@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +42,15 @@ namespace EVE_Fake
 
 
             Character char1 = new Character(char_name, starter_Kapital, erstes_Raumschiff);
+
+            //char1 in txt Datei schreiben 
+            StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+            
+            sw.WriteLine(char1.Name);
+            sw.WriteLine(starter_Kapital);
+            sw.WriteLine(char1.Raumschiff);
+
+            sw.Close();
 
             //Close newChar öffne CharSheet
             this.Hide();
