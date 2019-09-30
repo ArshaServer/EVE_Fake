@@ -34,6 +34,7 @@
             // 
             // btnNewGame
             // 
+            this.btnNewGame.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnNewGame.Location = new System.Drawing.Point(293, 12);
             this.btnNewGame.Name = "btnNewGame";
             this.btnNewGame.Size = new System.Drawing.Size(218, 53);

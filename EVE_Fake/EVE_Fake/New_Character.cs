@@ -24,11 +24,23 @@ namespace EVE_Fake
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            //Character erstellen
             string char_name = tbxCharName.Text;
             double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
             string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
 
             Character char1 = new Character(char_name, starter_Kapital, erstes_Raumschiff);
+        }
+
+        private void btnCancle_Click(object sender, EventArgs e)
+        {
+            //Menue beim abbrechen
+            this.Hide();
+
+            frmMenue menue = new frmMenue();
+
+            menue.Closed += (s, args) => this.Close();
+            menue.Show();
         }
     }
 }

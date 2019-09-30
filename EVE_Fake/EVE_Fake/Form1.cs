@@ -19,10 +19,14 @@ namespace EVE_Fake
 
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            //Neue Form Anzeigen
+            //hide frm menue
+            this.Hide();
+
+            //Neue Form Erzeugen und alte schließen
             New_Character newchar = new New_Character();
 
-            newchar.ShowDialog();
+            newchar.Closed += (s, args) => this.Close();
+            newchar.Show();
         }
     }
 }

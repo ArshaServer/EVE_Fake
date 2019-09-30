@@ -113,6 +113,7 @@
             this.btnCancle.TabIndex = 7;
             this.btnCancle.Text = "Cancle";
             this.btnCancle.UseVisualStyleBackColor = true;
+            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // New_Character
             // 

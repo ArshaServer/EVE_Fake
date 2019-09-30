@@ -14,6 +14,8 @@ namespace EVE_Fake
         private double kapital;
         private string raumschiff;
 
+
+        //public machen
         public string Name
         {
             get { return name; }
@@ -33,7 +35,7 @@ namespace EVE_Fake
         }
 
 
-        //Konstruktor
+        //Konstruktor 
         public Character(string nameChar, double startkapital, string erstesRaumschiff)
         {
             name = nameChar;
