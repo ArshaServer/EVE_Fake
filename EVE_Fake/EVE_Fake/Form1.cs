@@ -28,5 +28,15 @@ namespace EVE_Fake
             newchar.Closed += (s, args) => this.Close();
             newchar.Show();
         }
+
+        private void btnCharacterOne_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+
+            charSheet.Closed += (s, args) => this.Close();
+            charSheet.Show();
+        }
     }
 }

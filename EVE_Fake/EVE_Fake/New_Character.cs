@@ -36,19 +36,19 @@ namespace EVE_Fake
         {
             
             //Character erstellen
-            string char_name = tbxCharName.Text;
+            string char_Name = tbxCharName.Text;
             double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
             string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
 
 
-            Character char1 = new Character(char_name, starter_Kapital, erstes_Raumschiff);
+            
 
             //char1 in txt Datei schreiben 
             StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
             
-            sw.WriteLine(char1.Name);
+            sw.WriteLine(char_Name);
             sw.WriteLine(starter_Kapital);
-            sw.WriteLine(char1.Raumschiff);
+            sw.WriteLine(erstes_Raumschiff);
 
             sw.Close();
 

@@ -45,12 +45,13 @@
             // 
             // btnCharacterOne
             // 
-            this.btnCharacterOne.Location = new System.Drawing.Point(293, 150);
+            this.btnCharacterOne.Location = new System.Drawing.Point(293, 113);
             this.btnCharacterOne.Name = "btnCharacterOne";
             this.btnCharacterOne.Size = new System.Drawing.Size(218, 53);
             this.btnCharacterOne.TabIndex = 1;
             this.btnCharacterOne.Text = "Character one";
             this.btnCharacterOne.UseVisualStyleBackColor = true;
+            this.btnCharacterOne.Click += new System.EventHandler(this.btnCharacterOne_Click);
             // 
             // frmMenue
             // 

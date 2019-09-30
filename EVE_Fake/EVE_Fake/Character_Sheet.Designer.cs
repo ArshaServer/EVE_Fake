@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbxCharName = new System.Windows.Forms.TextBox();
             this.lbltitle = new System.Windows.Forms.Label();
             this.lblCharName = new System.Windows.Forms.Label();
@@ -35,12 +36,15 @@
             this.tbxMoney = new System.Windows.Forms.TextBox();
             this.lblRaumschiff = new System.Windows.Forms.Label();
             this.tbxRaumschiff = new System.Windows.Forms.TextBox();
+            this.tmrMining = new System.Windows.Forms.Timer(this.components);
+            this.btnAsteroid = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbxCharName
             // 
             this.tbxCharName.Location = new System.Drawing.Point(18, 58);
             this.tbxCharName.Name = "tbxCharName";
+            this.tbxCharName.ReadOnly = true;
             this.tbxCharName.Size = new System.Drawing.Size(100, 20);
             this.tbxCharName.TabIndex = 0;
             this.tbxCharName.TextChanged += new System.EventHandler(this.tbxCharName_TextChanged);
@@ -77,6 +81,7 @@
             // 
             this.tbxMoney.Location = new System.Drawing.Point(162, 58);
             this.tbxMoney.Name = "tbxMoney";
+            this.tbxMoney.ReadOnly = true;
             this.tbxMoney.Size = new System.Drawing.Size(100, 20);
             this.tbxMoney.TabIndex = 4;
             // 
@@ -93,14 +98,25 @@
             // 
             this.tbxRaumschiff.Location = new System.Drawing.Point(306, 58);
             this.tbxRaumschiff.Name = "tbxRaumschiff";
+            this.tbxRaumschiff.ReadOnly = true;
             this.tbxRaumschiff.Size = new System.Drawing.Size(100, 20);
             this.tbxRaumschiff.TabIndex = 5;
+            // 
+            // btnAsteroid
+            // 
+            this.btnAsteroid.Location = new System.Drawing.Point(162, 185);
+            this.btnAsteroid.Name = "btnAsteroid";
+            this.btnAsteroid.Size = new System.Drawing.Size(100, 100);
+            this.btnAsteroid.TabIndex = 7;
+            this.btnAsteroid.UseVisualStyleBackColor = true;
+            this.btnAsteroid.Click += new System.EventHandler(this.btnAsteroid_Click);
             // 
             // frmCharacter_Sheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 438);
+            this.Controls.Add(this.btnAsteroid);
             this.Controls.Add(this.lblRaumschiff);
             this.Controls.Add(this.tbxRaumschiff);
             this.Controls.Add(this.tbxMoney);
@@ -124,5 +140,7 @@
         private System.Windows.Forms.TextBox tbxMoney;
         private System.Windows.Forms.Label lblRaumschiff;
         private System.Windows.Forms.TextBox tbxRaumschiff;
+        private System.Windows.Forms.Timer tmrMining;
+        private System.Windows.Forms.Button btnAsteroid;
     }
 }
