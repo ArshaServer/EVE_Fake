@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace EVE_Fake
 {
-    public partial class Form1 : Form
+    public partial class frmMenue : Form
     {
-        public Form1()
+        public frmMenue()
         {
             InitializeComponent();
+        }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+            //Neue Form Anzeigen
+            New_Character newchar = new New_Character();
+
+            newchar.ShowDialog();
         }
     }
 }

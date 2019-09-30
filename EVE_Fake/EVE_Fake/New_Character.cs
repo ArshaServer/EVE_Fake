@@ -16,5 +16,19 @@ namespace EVE_Fake
         {
             InitializeComponent();
         }
+
+        private void tbxCharName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            string char_name = tbxCharName.Text;
+            double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
+            string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
+
+            Character char1 = new Character(char_name, starter_Kapital, erstes_Raumschiff);
+        }
     }
 }
