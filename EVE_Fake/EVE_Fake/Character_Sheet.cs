@@ -17,9 +17,18 @@ namespace EVE_Fake
         {
             InitializeComponent();
 
-            string CharName = File.ReadAllText(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+            //Text Datei Lesen
+            StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
 
-            tbxCharName.Text = CharName;
+            //Textdatei auslesen
+            string Name = sr.ReadLine();
+            string Wert = sr.ReadLine();
+            string Raumschiff = sr.ReadLine();
+
+            //string in Form augeben
+            tbxCharName.Text = Name;
+            tbxMoney.Text = Wert;
+            tbxRaumschiff.Text = Raumschiff; 
         }
 
         private void tbxCharName_TextChanged(object sender, EventArgs e)

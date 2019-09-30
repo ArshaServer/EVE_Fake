@@ -42,6 +42,7 @@ namespace EVE_Fake
 
             Character char1 = new Character(char_name, starter_Kapital, erstes_Raumschiff);
 
+            //Close newChar öffne CharSheet
             this.Hide();
 
             frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
