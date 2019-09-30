@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,15 @@ namespace EVE_Fake
         public frmCharacter_Sheet()
         {
             InitializeComponent();
+
+            string CharName = File.ReadAllText(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+
+            tbxCharName.Text = CharName;
+        }
+
+        private void tbxCharName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
