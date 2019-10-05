@@ -102,6 +102,10 @@
             this.tbxRaumschiff.Size = new System.Drawing.Size(100, 20);
             this.tbxRaumschiff.TabIndex = 5;
             // 
+            // tmrMining
+            // 
+            this.tmrMining.Interval = 1000;
+            // 
             // btnAsteroid
             // 
             this.btnAsteroid.Location = new System.Drawing.Point(162, 185);

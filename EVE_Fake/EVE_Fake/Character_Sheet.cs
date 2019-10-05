@@ -15,21 +15,17 @@ namespace EVE_Fake
     {
 
         static StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+        public string CharName = sr.ReadLine();
         public string Wert = sr.ReadLine();
+        public string Raumschiff = sr.ReadLine();
+
 
         public frmCharacter_Sheet()
         {
             InitializeComponent();
 
-            //Text Datei Lesen
-            StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
-
-            //Textdatei auslesen
-            string Name = sr.ReadLine();  
-            string Raumschiff = sr.ReadLine();
-
             //string in Form augeben
-            tbxCharName.Text = Name;
+            tbxCharName.Text = CharName;
             tbxMoney.Text = Wert;
             tbxRaumschiff.Text = Raumschiff;
 
@@ -56,10 +52,28 @@ namespace EVE_Fake
 
         private void btnAsteroid_Click(object sender, EventArgs e)
         {
-            double DoubleWert = Convert.ToDouble(Wert);
+            //Wert +1 hochzählen
+            tmrMining.Start();
+
+            int DoubleWert = Convert.ToInt32(Wert);
             DoubleWert++;
 
-            DoubleWert.ToString();
+            Wert = DoubleWert.ToString();
+
+            tbxMoney.Text = Wert;
+
+            //neuen Wert int txt schreiben
+            StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+
+            sw.WriteLine(CharName);
+            sw.WriteLine(Wert);
+            sw.WriteLine(Raumschiff);
+
+            btnAsteroid.Hide();
+
+            sw.Close();
+            
+
         }
     }
 }
