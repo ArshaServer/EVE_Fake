@@ -52,9 +52,13 @@ namespace EVE_Fake
 
         private void btnAsteroid_Click(object sender, EventArgs e)
         {
-            //Wert +1 hochzählen
             tmrMining.Start();
+            btnAsteroid.Hide();
 
+        }
+
+        private void tmrMining_Tick(object sender, EventArgs e)
+        {
             int DoubleWert = Convert.ToInt32(Wert);
             DoubleWert++;
 
@@ -69,11 +73,11 @@ namespace EVE_Fake
             sw.WriteLine(Wert);
             sw.WriteLine(Raumschiff);
 
-            btnAsteroid.Hide();
-
             sw.Close();
-            
 
+            btnAsteroid.Show();
+
+            tmrMining.Stop();
         }
     }
 }

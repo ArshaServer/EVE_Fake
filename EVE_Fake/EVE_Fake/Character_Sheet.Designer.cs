@@ -105,6 +105,7 @@
             // tmrMining
             // 
             this.tmrMining.Interval = 1000;
+            this.tmrMining.Tick += new System.EventHandler(this.tmrMining_Tick);
             // 
             // btnAsteroid
             // 
