@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EVE_Fake
 {
-    public partial class frmMenue : Form
+    public partial class frmMenu : Form
     {
-        public frmMenue()
+        public frmMenu()
         {
             InitializeComponent();
         }

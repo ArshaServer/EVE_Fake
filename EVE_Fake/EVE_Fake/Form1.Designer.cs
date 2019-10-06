@@ -1,6 +1,6 @@
 ﻿namespace EVE_Fake
 {
-    partial class frmMenue
+    partial class frmMenu
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -53,14 +53,14 @@
             this.btnCharacterOne.UseVisualStyleBackColor = true;
             this.btnCharacterOne.Click += new System.EventHandler(this.btnCharacterOne_Click);
             // 
-            // frmMenue
+            // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 449);
             this.Controls.Add(this.btnCharacterOne);
             this.Controls.Add(this.btnNewGame);
-            this.Name = "frmMenue";
+            this.Name = "frmMenu";
             this.Text = "Menue";
             this.ResumeLayout(false);
 

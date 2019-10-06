@@ -13,24 +13,57 @@ namespace EVE_Fake
 {
     public partial class frmCharacter_Sheet : Form
     {
+        public void ReadTxt()
+        {
+            StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
 
-        static StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
-        public string CharName = sr.ReadLine();
-        public string Wert = sr.ReadLine();
-        public string Raumschiff = sr.ReadLine();
+            string CharName = sr.ReadLine();
+            string Wert = sr.ReadLine();
+            string Raumschiff = sr.ReadLine();
 
+            tbxCharName.Text = CharName;
+            tbxMoney.Text = Wert;
+            tbxRaumschiff.Text = Raumschiff;
+
+            sr.Close();
+        }
+
+        public void AsteroidPlusEinGeld()
+        {
+            StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+
+            string CharName = sr.ReadLine();
+            string Wert = sr.ReadLine();
+            string Raumschiff = sr.ReadLine();
+
+            int DoubleWert = Convert.ToInt32(Wert);
+            DoubleWert++;
+
+            Wert = DoubleWert.ToString();
+
+            tbxMoney.Text = Wert;
+
+            sr.Close();
+
+            //neuen Wert int txt schreiben
+            StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+
+            sw.WriteLine(CharName);
+            sw.WriteLine(Wert);
+            sw.WriteLine(Raumschiff);
+
+            sw.Close();
+
+            btnAsteroid.Show();
+
+            tmrMining.Stop();
+        }
 
         public frmCharacter_Sheet()
         {
             InitializeComponent();
 
-            //string in Form augeben
-            tbxCharName.Text = CharName;
-            tbxMoney.Text = Wert;
-            tbxRaumschiff.Text = Raumschiff;
-
-            sr.Close();     
-
+            ReadTxt();     
         }
 
         //protected override void OnPaint(PaintEventArgs e)
@@ -49,6 +82,7 @@ namespace EVE_Fake
 
         private void btnAsteroid_Click(object sender, EventArgs e)
         {
+
             tmrMining.Start();
             btnAsteroid.Hide();
 
@@ -56,25 +90,20 @@ namespace EVE_Fake
 
         private void tmrMining_Tick(object sender, EventArgs e)
         {
-            int DoubleWert = Convert.ToInt32(Wert);
-            DoubleWert++;
+            AsteroidPlusEinGeld();
+        }
 
-            Wert = DoubleWert.ToString();
+        private void tsiGroßeMap_Click(object sender, EventArgs e)
+        {
+            
 
-            tbxMoney.Text = Wert;
+            //Weg zur Großen Map
+            this.Hide();
 
-            //neuen Wert int txt schreiben
-            StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+            frmGroßeMap großeMap = new frmGroßeMap();
 
-            sw.WriteLine(CharName);
-            sw.WriteLine(Wert);
-            sw.WriteLine(Raumschiff);
-
-            sw.Close();
-
-            btnAsteroid.Show();
-
-            tmrMining.Stop();
+            großeMap.Closed += (s, args) => this.Close();
+            großeMap.Show();
         }
     }
 }

@@ -66,7 +66,7 @@ namespace EVE_Fake
             //Menue beim abbrechen
             this.Hide();
 
-            frmMenue menue = new frmMenue();
+            frmMenu menue = new frmMenu();
 
             menue.Closed += (s, args) => this.Close();
             menue.Show();
