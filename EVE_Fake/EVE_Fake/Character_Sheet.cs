@@ -40,9 +40,6 @@ namespace EVE_Fake
         //    Rectangle rect = new Rectangle(400, 120, 100, 100);
 
         //    g.FillEllipse(Brushes.Red, rect);
-
-            
-
         //}
 
         private void tbxCharName_TextChanged(object sender, EventArgs e)
