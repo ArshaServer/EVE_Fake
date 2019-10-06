@@ -43,6 +43,9 @@
             this.tsiMap = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiGroßeMap = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiLocaleMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblLocation = new System.Windows.Forms.Label();
+            this.tbxLocation = new System.Windows.Forms.TextBox();
             this.mnsCharSheet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +147,8 @@
             // tsiMap
             // 
             this.tsiMap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsiGroßeMap});
+            this.tsiGroßeMap,
+            this.tsiLocaleMap});
             this.tsiMap.Name = "tsiMap";
             this.tsiMap.Size = new System.Drawing.Size(43, 20);
             this.tsiMap.Text = "Map";
@@ -163,11 +167,36 @@
             this.tsiInfo.Text = "Info";
             this.tsiInfo.Click += new System.EventHandler(this.tsiInfo_Click);
             // 
+            // tsiLocaleMap
+            // 
+            this.tsiLocaleMap.Name = "tsiLocaleMap";
+            this.tsiLocaleMap.Size = new System.Drawing.Size(152, 22);
+            this.tsiLocaleMap.Text = "Locale Map";
+            // 
+            // lblLocation
+            // 
+            this.lblLocation.AutoSize = true;
+            this.lblLocation.Location = new System.Drawing.Point(442, 53);
+            this.lblLocation.Name = "lblLocation";
+            this.lblLocation.Size = new System.Drawing.Size(51, 13);
+            this.lblLocation.TabIndex = 10;
+            this.lblLocation.Text = "Location:";
+            // 
+            // tbxLocation
+            // 
+            this.tbxLocation.Location = new System.Drawing.Point(445, 69);
+            this.tbxLocation.Name = "tbxLocation";
+            this.tbxLocation.ReadOnly = true;
+            this.tbxLocation.Size = new System.Drawing.Size(127, 20);
+            this.tbxLocation.TabIndex = 9;
+            // 
             // frmCharacter_Sheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 438);
+            this.Controls.Add(this.lblLocation);
+            this.Controls.Add(this.tbxLocation);
             this.Controls.Add(this.btnAsteroid);
             this.Controls.Add(this.lblRaumschiff);
             this.Controls.Add(this.tbxRaumschiff);
@@ -203,5 +232,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsiMap;
         private System.Windows.Forms.ToolStripMenuItem tsiGroßeMap;
         private System.Windows.Forms.ToolStripMenuItem tsiInfo;
+        private System.Windows.Forms.ToolStripMenuItem tsiLocaleMap;
+        private System.Windows.Forms.Label lblLocation;
+        private System.Windows.Forms.TextBox tbxLocation;
     }
 }

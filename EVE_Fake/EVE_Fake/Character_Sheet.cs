@@ -21,10 +21,12 @@ namespace EVE_Fake
             string CharName = sr.ReadLine();
             string Wert = sr.ReadLine();
             string Raumschiff = sr.ReadLine();
+            string Location = sr.ReadLine();
 
             tbxCharName.Text = CharName;
             tbxMoney.Text = Wert;
             tbxRaumschiff.Text = Raumschiff;
+            tbxLocation.Text = Location;
 
             sr.Close();
         }
@@ -36,6 +38,7 @@ namespace EVE_Fake
             string CharName = sr.ReadLine();
             string Wert = sr.ReadLine();
             string Raumschiff = sr.ReadLine();
+            string Location = sr.ReadLine();
 
             int DoubleWert = Convert.ToInt32(Wert);
             DoubleWert++;
@@ -52,12 +55,41 @@ namespace EVE_Fake
             sw.WriteLine(CharName);
             sw.WriteLine(Wert);
             sw.WriteLine(Raumschiff);
+            sw.WriteLine(Location);
 
             sw.Close();
 
             btnAsteroid.Show();
 
             tmrMining.Stop();
+        }
+#endregion
+
+        #region ToolStripItems
+
+        private void tsiGroßeMap_Click(object sender, EventArgs e)
+        {
+
+            //Weg zur Großen Map
+            this.Hide();
+
+            frmGroßeMap großeMap = new frmGroßeMap();
+
+            großeMap.Hide();
+
+            großeMap.Closed += (s, args) => this.Close();
+            großeMap.Show();
+            
+        }
+
+        private void tsiInfo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+
+            charSheet.Closed += (s, args) => this.Close();
+            charSheet.Show();
         }
 #endregion
 
@@ -95,30 +127,6 @@ namespace EVE_Fake
             AsteroidPlusEinGeld();
         }
 
-        private void tsiGroßeMap_Click(object sender, EventArgs e)
-        {
-            
-
-            //Weg zur Großen Map
-            this.Hide();
-
-            frmGroßeMap großeMap = new frmGroßeMap();
-
-            großeMap.Hide();
-
-            großeMap.Closed += (s, args) => this.Close();
-            großeMap.Show();
-            
-        }
-
-        private void tsiInfo_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-            charSheet.Closed += (s, args) => this.Close();
-            charSheet.Show();
-        }
+       
     }
 }

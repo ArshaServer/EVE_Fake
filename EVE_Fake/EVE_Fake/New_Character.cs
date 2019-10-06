@@ -39,6 +39,7 @@ namespace EVE_Fake
             string char_Name = tbxCharName.Text;
             double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
             string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
+            string start_Location = "Erde/Orbit Markt";
 
 
             
@@ -49,6 +50,7 @@ namespace EVE_Fake
             sw.WriteLine(char_Name);
             sw.WriteLine(starter_Kapital);
             sw.WriteLine(erstes_Raumschiff);
+            sw.WriteLine(start_Location);
 
             sw.Close();
 

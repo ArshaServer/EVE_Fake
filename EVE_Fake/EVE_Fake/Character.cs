@@ -13,6 +13,7 @@ namespace EVE_Fake
         private string name;
         private double kapital;
         private string raumschiff;
+        private string location;
 
 
         //public machen
@@ -34,13 +35,19 @@ namespace EVE_Fake
             set { raumschiff = value; }
         }
 
+        public string Location
+        {
+            get { return location; }
+            set { location = value; }
+        }
 
         //Konstruktor 
-        public Character(string nameChar, double startkapital, string erstesRaumschiff)
+        public Character(string nameChar, double startkapital, string erstesRaumschiff, string AnfangsLocation)
         {
             name = nameChar;
             startkapital = kapital;
             raumschiff = erstesRaumschiff;
+            location = AnfangsLocation;
         }
             
             
