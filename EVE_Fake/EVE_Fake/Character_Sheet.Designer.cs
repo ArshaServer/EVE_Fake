@@ -42,6 +42,7 @@
             this.tsiCharacter = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiMap = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiGroßeMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsCharSheet.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,6 +135,8 @@
             // 
             // tsiCharacter
             // 
+            this.tsiCharacter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiInfo});
             this.tsiCharacter.Name = "tsiCharacter";
             this.tsiCharacter.Size = new System.Drawing.Size(70, 20);
             this.tsiCharacter.Text = "Character";
@@ -152,6 +155,13 @@
             this.tsiGroßeMap.Size = new System.Drawing.Size(152, 22);
             this.tsiGroßeMap.Text = "Große Map";
             this.tsiGroßeMap.Click += new System.EventHandler(this.tsiGroßeMap_Click);
+            // 
+            // tsiInfo
+            // 
+            this.tsiInfo.Name = "tsiInfo";
+            this.tsiInfo.Size = new System.Drawing.Size(152, 22);
+            this.tsiInfo.Text = "Info";
+            this.tsiInfo.Click += new System.EventHandler(this.tsiInfo_Click);
             // 
             // frmCharacter_Sheet
             // 
@@ -192,5 +202,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsiCharacter;
         private System.Windows.Forms.ToolStripMenuItem tsiMap;
         private System.Windows.Forms.ToolStripMenuItem tsiGroßeMap;
+        private System.Windows.Forms.ToolStripMenuItem tsiInfo;
     }
 }

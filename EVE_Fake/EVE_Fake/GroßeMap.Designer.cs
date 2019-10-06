@@ -33,11 +33,12 @@
             this.btnErde = new System.Windows.Forms.Button();
             this.tmrSelectedPlanet = new System.Windows.Forms.Timer(this.components);
             this.tmrSelctedPlanetSmal = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsiCharacter = new System.Windows.Forms.ToolStripMenuItem();
-            this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiGroßeMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnsGroßeMap = new System.Windows.Forms.MenuStrip();
+            this.mnsGroßeMap.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnMars
@@ -79,17 +80,6 @@
             this.tmrSelctedPlanetSmal.Interval = 500;
             this.tmrSelctedPlanetSmal.Tick += new System.EventHandler(this.tmrSelctedPlanetSmal_Tick);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsiCharacter,
-            this.mapToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(707, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // tsiCharacter
             // 
             this.tsiCharacter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -98,18 +88,37 @@
             this.tsiCharacter.Size = new System.Drawing.Size(70, 20);
             this.tsiCharacter.Text = "Character";
             // 
-            // mapToolStripMenuItem
-            // 
-            this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
-            this.mapToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.mapToolStripMenuItem.Text = "Map";
-            // 
             // tsiInfo
             // 
             this.tsiInfo.Name = "tsiInfo";
             this.tsiInfo.Size = new System.Drawing.Size(152, 22);
             this.tsiInfo.Text = "Info";
             this.tsiInfo.Click += new System.EventHandler(this.tsiInfo_Click);
+            // 
+            // mapToolStripMenuItem
+            // 
+            this.mapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiGroßeMap});
+            this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.mapToolStripMenuItem.Text = "Map";
+            // 
+            // tsiGroßeMap
+            // 
+            this.tsiGroßeMap.Name = "tsiGroßeMap";
+            this.tsiGroßeMap.Size = new System.Drawing.Size(152, 22);
+            this.tsiGroßeMap.Text = "Große Map";
+            // 
+            // mnsGroßeMap
+            // 
+            this.mnsGroßeMap.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiCharacter,
+            this.mapToolStripMenuItem});
+            this.mnsGroßeMap.Location = new System.Drawing.Point(0, 0);
+            this.mnsGroßeMap.Name = "mnsGroßeMap";
+            this.mnsGroßeMap.Size = new System.Drawing.Size(707, 24);
+            this.mnsGroßeMap.TabIndex = 2;
+            this.mnsGroßeMap.Text = "menuStrip1";
             // 
             // frmGroßeMap
             // 
@@ -118,12 +127,12 @@
             this.ClientSize = new System.Drawing.Size(707, 514);
             this.Controls.Add(this.btnMars);
             this.Controls.Add(this.btnErde);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.mnsGroßeMap);
+            this.MainMenuStrip = this.mnsGroßeMap;
             this.Name = "frmGroßeMap";
             this.Text = "GroßeMap";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mnsGroßeMap.ResumeLayout(false);
+            this.mnsGroßeMap.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,9 +144,10 @@
         private System.Windows.Forms.Button btnMars;
         private System.Windows.Forms.Timer tmrSelectedPlanet;
         private System.Windows.Forms.Timer tmrSelctedPlanetSmal;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsiCharacter;
-        private System.Windows.Forms.ToolStripMenuItem mapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsiInfo;
+        private System.Windows.Forms.ToolStripMenuItem mapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsiGroßeMap;
+        private System.Windows.Forms.MenuStrip mnsGroßeMap;
     }
 }

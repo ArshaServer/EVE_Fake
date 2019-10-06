@@ -13,6 +13,7 @@ namespace EVE_Fake
 {
     public partial class frmCharacter_Sheet : Form
     {
+        #region Methoden
         public void ReadTxt()
         {
             StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
@@ -58,6 +59,7 @@ namespace EVE_Fake
 
             tmrMining.Stop();
         }
+#endregion
 
         public frmCharacter_Sheet()
         {
@@ -102,8 +104,21 @@ namespace EVE_Fake
 
             frmGroßeMap großeMap = new frmGroßeMap();
 
+            großeMap.Hide();
+
             großeMap.Closed += (s, args) => this.Close();
             großeMap.Show();
+            
+        }
+
+        private void tsiInfo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+
+            charSheet.Closed += (s, args) => this.Close();
+            charSheet.Show();
         }
     }
 }
