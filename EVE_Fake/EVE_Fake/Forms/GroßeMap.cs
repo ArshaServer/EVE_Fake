@@ -45,12 +45,12 @@ namespace EVE_Fake
 
         private void tsiInfo_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
 
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+            //frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
 
-            charSheet.Closed += (s, args) => this.Close();
-            charSheet.Show();
+            //charSheet.Closed += (s, args) => this.Close();
+            //charSheet.Show();
         }
     }
 }

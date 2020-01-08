@@ -81,11 +81,11 @@ namespace EVE_Fake
             großeMap.Show();
             
         }
-
+                  
         private void tsiInfo_Click(object sender, EventArgs e)
         {
             this.Hide();
-
+                            
             frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
 
             charSheet.Closed += (s, args) => this.Close();
@@ -127,6 +127,12 @@ namespace EVE_Fake
             AsteroidPlusEinGeld();
         }
 
-       
+        private void frmCharacter_Sheet_Load(object sender, EventArgs e)
+        {
+            frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
+            TopBar charBar = new TopBar(frm1);
+            this.Controls.Add(charBar.mnsCharSheet);
+           
+        }
     }
 }

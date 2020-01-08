@@ -38,15 +38,8 @@
             this.tbxRaumschiff = new System.Windows.Forms.TextBox();
             this.tmrMining = new System.Windows.Forms.Timer(this.components);
             this.btnAsteroid = new System.Windows.Forms.Button();
-            this.mnsCharSheet = new System.Windows.Forms.MenuStrip();
-            this.tsiCharacter = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsiMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsiGroßeMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsiInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsiLocaleMap = new System.Windows.Forms.ToolStripMenuItem();
             this.lblLocation = new System.Windows.Forms.Label();
             this.tbxLocation = new System.Windows.Forms.TextBox();
-            this.mnsCharSheet.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxCharName
@@ -125,54 +118,6 @@
             this.btnAsteroid.UseVisualStyleBackColor = true;
             this.btnAsteroid.Click += new System.EventHandler(this.btnAsteroid_Click);
             // 
-            // mnsCharSheet
-            // 
-            this.mnsCharSheet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsiCharacter,
-            this.tsiMap});
-            this.mnsCharSheet.Location = new System.Drawing.Point(0, 0);
-            this.mnsCharSheet.Name = "mnsCharSheet";
-            this.mnsCharSheet.Size = new System.Drawing.Size(704, 24);
-            this.mnsCharSheet.TabIndex = 8;
-            this.mnsCharSheet.Text = "Character";
-            // 
-            // tsiCharacter
-            // 
-            this.tsiCharacter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsiInfo});
-            this.tsiCharacter.Name = "tsiCharacter";
-            this.tsiCharacter.Size = new System.Drawing.Size(70, 20);
-            this.tsiCharacter.Text = "Character";
-            // 
-            // tsiMap
-            // 
-            this.tsiMap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsiGroßeMap,
-            this.tsiLocaleMap});
-            this.tsiMap.Name = "tsiMap";
-            this.tsiMap.Size = new System.Drawing.Size(43, 20);
-            this.tsiMap.Text = "Map";
-            // 
-            // tsiGroßeMap
-            // 
-            this.tsiGroßeMap.Name = "tsiGroßeMap";
-            this.tsiGroßeMap.Size = new System.Drawing.Size(152, 22);
-            this.tsiGroßeMap.Text = "Große Map";
-            this.tsiGroßeMap.Click += new System.EventHandler(this.tsiGroßeMap_Click);
-            // 
-            // tsiInfo
-            // 
-            this.tsiInfo.Name = "tsiInfo";
-            this.tsiInfo.Size = new System.Drawing.Size(152, 22);
-            this.tsiInfo.Text = "Info";
-            this.tsiInfo.Click += new System.EventHandler(this.tsiInfo_Click);
-            // 
-            // tsiLocaleMap
-            // 
-            this.tsiLocaleMap.Name = "tsiLocaleMap";
-            this.tsiLocaleMap.Size = new System.Drawing.Size(152, 22);
-            this.tsiLocaleMap.Text = "Locale Map";
-            // 
             // lblLocation
             // 
             this.lblLocation.AutoSize = true;
@@ -194,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 438);
+            this.ClientSize = new System.Drawing.Size(734, 461);
             this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.tbxLocation);
             this.Controls.Add(this.btnAsteroid);
@@ -205,12 +150,9 @@
             this.Controls.Add(this.lblCharName);
             this.Controls.Add(this.lbltitle);
             this.Controls.Add(this.tbxCharName);
-            this.Controls.Add(this.mnsCharSheet);
-            this.MainMenuStrip = this.mnsCharSheet;
             this.Name = "frmCharacter_Sheet";
             this.Text = "Character_Sheet";
-            this.mnsCharSheet.ResumeLayout(false);
-            this.mnsCharSheet.PerformLayout();
+            this.Load += new System.EventHandler(this.frmCharacter_Sheet_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,12 +169,6 @@
         private System.Windows.Forms.TextBox tbxRaumschiff;
         private System.Windows.Forms.Timer tmrMining;
         private System.Windows.Forms.Button btnAsteroid;
-        private System.Windows.Forms.MenuStrip mnsCharSheet;
-        private System.Windows.Forms.ToolStripMenuItem tsiCharacter;
-        private System.Windows.Forms.ToolStripMenuItem tsiMap;
-        private System.Windows.Forms.ToolStripMenuItem tsiGroßeMap;
-        private System.Windows.Forms.ToolStripMenuItem tsiInfo;
-        private System.Windows.Forms.ToolStripMenuItem tsiLocaleMap;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.TextBox tbxLocation;
     }
