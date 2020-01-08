@@ -46,42 +46,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
-    <Compile Include="Character_Sheet.cs">
+    <Compile Include="Forms\Character_Sheet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Character_Sheet.Designer.cs">
+    <Compile Include="Forms\Character_Sheet.Designer.cs">
       <DependentUpon>Character_Sheet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GroßeMap.cs">
+    <Compile Include="Forms\GroßeMap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GroßeMap.Designer.cs">
+    <Compile Include="Forms\GroßeMap.Designer.cs">
       <DependentUpon>GroßeMap.cs</DependentUpon>
     </Compile>
-    <Compile Include="New_Character.cs">
+    <Compile Include="LocalMapFrm.cs" />
+    <Compile Include="Forms\New_Character.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="New_Character.Designer.cs">
+    <Compile Include="Forms\New_Character.Designer.cs">
       <DependentUpon>New_Character.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Character_Sheet.resx">
+    <Compile Include="TopBar.cs" />
+    <EmbeddedResource Include="Forms\Character_Sheet.resx">
       <DependentUpon>Character_Sheet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GroßeMap.resx">
+    <EmbeddedResource Include="Forms\GroßeMap.resx">
       <DependentUpon>GroßeMap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="New_Character.resx">
+    <EmbeddedResource Include="Forms\New_Character.resx">
       <DependentUpon>New_Character.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -112,6 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Mars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\CharDaten.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

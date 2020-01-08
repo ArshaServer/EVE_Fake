@@ -42,8 +42,6 @@ namespace EVE_Fake
             string start_Location = "Erde/Orbit Markt";
 
 
-            
-
             //char1 in txt Datei schreiben 
             StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
             
