@@ -67,30 +67,30 @@ namespace EVE_Fake
 
         #region ToolStripItems
 
-        private void tsiGroßeMap_Click(object sender, EventArgs e)
-        {
+        //private void tsiGroßeMap_Click(object sender, EventArgs e)
+        //{
 
-            //Weg zur Großen Map
-            this.Hide();
+        //    //Weg zur Großen Map
+        //    this.Hide();
 
-            frmGroßeMap großeMap = new frmGroßeMap();
+        //    frmGroßeMap großeMap = new frmGroßeMap();
 
-            großeMap.Hide();
+        //    großeMap.Hide();
 
-            großeMap.Closed += (s, args) => this.Close();
-            großeMap.Show();
+        //    großeMap.Closed += (s, args) => this.Close();
+        //    großeMap.Show();
             
-        }
+        //}
                   
-        private void tsiInfo_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+        //private void tsiInfo_Click(object sender, EventArgs e)
+        //{
+        //    this.Hide();
                             
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+        //    frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
 
-            charSheet.Closed += (s, args) => this.Close();
-            charSheet.Show();
-        }
+        //    charSheet.Closed += (s, args) => this.Close();
+        //    charSheet.Show();
+        //}
 #endregion
 
         public frmCharacter_Sheet()

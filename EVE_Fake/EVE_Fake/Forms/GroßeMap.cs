@@ -52,5 +52,12 @@ namespace EVE_Fake
             //charSheet.Closed += (s, args) => this.Close();
             //charSheet.Show();
         }
+
+        private void frmGroßeMap_Load(object sender, EventArgs e)
+        {
+            frmGroßeMap frm1 = new frmGroßeMap();
+            TopBar ObenLeiste = new TopBar(frm1);
+            this.Controls.Add(ObenLeiste.mnsCharSheet);
+        }
     }
 }
