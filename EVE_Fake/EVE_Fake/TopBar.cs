@@ -23,7 +23,7 @@ namespace EVE_Fake
 
         //Auswechsel Form
         public Form frm1;
-   
+        
 
         //Methoden
         public void OpenAndCloseForm(Form frmToOpen, bool btnPressed)
@@ -46,7 +46,7 @@ namespace EVE_Fake
         {
             frm1 = currentForm;
 
-            mnsCharSheet.Location = new Point(40, 10);
+            mnsCharSheet.Location = new Point(0, 0);
             mnsCharSheet.Name = "mnsCharSheet";
             mnsCharSheet.Size = new Size(734, 24);
             mnsCharSheet.TabIndex = 8;
