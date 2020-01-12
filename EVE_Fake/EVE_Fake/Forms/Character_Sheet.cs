@@ -14,11 +14,6 @@ namespace EVE_Fake
 {
     public partial class frmCharacter_Sheet : Form
     {
-        public string _IDWertO
-        {
-            get { return _IDWertO; }
-            set { _IDWertO = value; }
-        }
 
         #region Methoden
 
@@ -73,24 +68,24 @@ namespace EVE_Fake
         }
 #endregion
 
-        public frmCharacter_Sheet()
+        public frmCharacter_Sheet(string id)
         {
             InitializeComponent();
 
             //DB Daten in tbx schreiben
             DBMethoden dbm = new DBMethoden();
-            //dbm.DBWriteInTbx(tbxCharName, "Name", New_Character.idWert);
-            //dbm.DBWriteInTbx(tbxMoney, "Money", New_Character.idWert);
-            //dbm.DBWriteInTbx(tbxRaumschiff, "Schiff_id", New_Character.idWert);
-            //dbm.DBWriteInTbx(tbxLocation, "Location", New_Character.idWert);
-            lblDBConnection.Text = _IDWertO;
+            dbm.DBWriteInTbx(tbxCharName, "Name", id);
+            dbm.DBWriteInTbx(tbxMoney, "Money", id);
+            dbm.DBWriteInTbx(tbxRaumschiff, "Schiff_id", id);
+            dbm.DBWriteInTbx(tbxLocation, "Location", id);
+            lblDBConnection.Text = frmMenu.IdCharakter;
             //ReadTxt();               
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
             //TopBar
-            frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
+            frmCharacter_Sheet frm1 = new frmCharacter_Sheet(frmMenu.IdCharakter);
             TopBar charBar = new TopBar(frm1);
             Controls.Add(charBar.mnsCharSheet);
 
@@ -112,7 +107,6 @@ namespace EVE_Fake
 
         private void btnAsteroid_Click(object sender, EventArgs e)
         {
-
             tmrMining.Start();
             btnAsteroid.Hide();
 

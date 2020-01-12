@@ -109,7 +109,7 @@ namespace EVE_Fake
         private void tsiInfo_Click(object sender, EventArgs e)
         {
             buttonClick = true;
-            frmCharacter_Sheet frmChar = new frmCharacter_Sheet();
+            frmCharacter_Sheet frmChar = new frmCharacter_Sheet(frmMenu.IdCharakter);
             OpenAndCloseForm(frmChar, buttonClick);
         }
         #endregion

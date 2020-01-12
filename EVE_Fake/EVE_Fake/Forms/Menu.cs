@@ -12,12 +12,9 @@ namespace EVE_Fake
 {
     public partial class frmMenu : Form
     {
-        public string _IdWert
-        {
-            get { return _IdWert; }
-            set { _IdWert = value; }
-        }
 
+        public static string IdCharakter;
+        
         public frmMenu()
         {
             InitializeComponent();
@@ -39,14 +36,22 @@ namespace EVE_Fake
         {
             this.Hide();
 
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+            IdCharakter = "0";
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(IdCharakter);
 
             charSheet.Closed += (s, args) => this.Close();
             charSheet.Show();
+        }
 
-            _IdWert = "0";
+        private void btnCharacterTwo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
 
-            charSheet._IDWertO = _IdWert;
+            IdCharakter = "1";
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(IdCharakter);
+
+            charSheet.Closed += (s, args) => this.Close();
+            charSheet.Show();
         }
     }
 }

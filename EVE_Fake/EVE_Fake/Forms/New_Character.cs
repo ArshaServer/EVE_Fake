@@ -56,9 +56,8 @@ namespace EVE_Fake
             //Close newChar öffne CharSheet
             this.Hide();
 
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(frmMenu.IdCharakter);
 
-            
 
             charSheet.Closed += (s, args) => this.Close();
             charSheet.Show();
