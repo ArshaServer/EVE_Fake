@@ -40,6 +40,7 @@
             this.btnAsteroid = new System.Windows.Forms.Button();
             this.lblLocation = new System.Windows.Forms.Label();
             this.tbxLocation = new System.Windows.Forms.TextBox();
+            this.lblDBConnection = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbxCharName
@@ -135,11 +136,21 @@
             this.tbxLocation.Size = new System.Drawing.Size(127, 20);
             this.tbxLocation.TabIndex = 9;
             // 
+            // lblDBConnection
+            // 
+            this.lblDBConnection.AutoSize = true;
+            this.lblDBConnection.Location = new System.Drawing.Point(687, 436);
+            this.lblDBConnection.Name = "lblDBConnection";
+            this.lblDBConnection.Size = new System.Drawing.Size(35, 13);
+            this.lblDBConnection.TabIndex = 11;
+            this.lblDBConnection.Text = "label1";
+            // 
             // frmCharacter_Sheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 461);
+            this.Controls.Add(this.lblDBConnection);
             this.Controls.Add(this.lblLocation);
             this.Controls.Add(this.tbxLocation);
             this.Controls.Add(this.btnAsteroid);
@@ -171,5 +182,6 @@
         private System.Windows.Forms.Button btnAsteroid;
         private System.Windows.Forms.Label lblLocation;
         private System.Windows.Forms.TextBox tbxLocation;
+        private System.Windows.Forms.Label lblDBConnection;
     }
 }

@@ -12,6 +12,12 @@ namespace EVE_Fake
 {
     public partial class frmMenu : Form
     {
+        public string _IdWert
+        {
+            get { return _IdWert; }
+            set { _IdWert = value; }
+        }
+
         public frmMenu()
         {
             InitializeComponent();
@@ -37,6 +43,10 @@ namespace EVE_Fake
 
             charSheet.Closed += (s, args) => this.Close();
             charSheet.Show();
+
+            _IdWert = "0";
+
+            charSheet._IDWertO = _IdWert;
         }
     }
 }

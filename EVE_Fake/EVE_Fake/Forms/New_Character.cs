@@ -13,6 +13,7 @@ namespace EVE_Fake
 {
     public partial class New_Character : Form
     {
+       
         public New_Character()
         {
 
@@ -72,6 +73,7 @@ namespace EVE_Fake
 
             menue.Closed += (s, args) => this.Close();
             menue.Show();
+
         }
     }
 }

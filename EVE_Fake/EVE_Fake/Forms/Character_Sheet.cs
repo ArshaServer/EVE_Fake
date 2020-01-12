@@ -14,9 +14,14 @@ namespace EVE_Fake
 {
     public partial class frmCharacter_Sheet : Form
     {
-
+        public string _IDWertO
+        {
+            get { return _IDWertO; }
+            set { _IDWertO = value; }
+        }
 
         #region Methoden
+
         public void ReadTxt()
         {
             StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
@@ -68,71 +73,27 @@ namespace EVE_Fake
         }
 #endregion
 
-        #region ToolStripItems
-
-        //private void tsiGroßeMap_Click(object sender, EventArgs e)
-        //{
-
-        //    //Weg zur Großen Map
-        //    this.Hide();
-
-        //    frmGroßeMap großeMap = new frmGroßeMap();
-
-        //    großeMap.Hide();
-
-        //    großeMap.Closed += (s, args) => this.Close();
-        //    großeMap.Show();
-            
-        //}
-                  
-        //private void tsiInfo_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-                            
-        //    frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-        //    charSheet.Closed += (s, args) => this.Close();
-        //    charSheet.Show();
-        //}
-#endregion
-
         public frmCharacter_Sheet()
         {
             InitializeComponent();
 
-            //ReadTxt();
-
-                        
+            //DB Daten in tbx schreiben
+            DBMethoden dbm = new DBMethoden();
+            //dbm.DBWriteInTbx(tbxCharName, "Name", New_Character.idWert);
+            //dbm.DBWriteInTbx(tbxMoney, "Money", New_Character.idWert);
+            //dbm.DBWriteInTbx(tbxRaumschiff, "Schiff_id", New_Character.idWert);
+            //dbm.DBWriteInTbx(tbxLocation, "Location", New_Character.idWert);
+            lblDBConnection.Text = _IDWertO;
+            //ReadTxt();               
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
+            //TopBar
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
             TopBar charBar = new TopBar(frm1);
-            this.Controls.Add(charBar.mnsCharSheet);
-            MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=db_eve_fake");
+            Controls.Add(charBar.mnsCharSheet);
 
-            connection.Open();
-            //if = ob connection offen ist
-            if(connection.State == ConnectionState.Open)
-            {
-
-            }
-            else
-            {
-
-            }
-            
-
-            MySqlCommand cmdLesen = new MySqlCommand("Select * from Charakter", connection);
-            MySqlDataReader dataReader = cmdLesen.ExecuteReader();
-
-            while(dataReader.Read())
-            {
-                tbxCharName.Text = dataReader.GetString(1);
-            }
-            
-            connection.Close();
         }
 
         //protected override void OnPaint(PaintEventArgs e)
