@@ -34,7 +34,6 @@ namespace EVE_Fake
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
             try
             {
                 Character Cha = new Character();
@@ -50,29 +49,10 @@ namespace EVE_Fake
                 MessageBox.Show("Charakter Speicherung Fehlgeschlagen: " + ex.Message);
             }
 
-
-            //Character erstellen
-            //string char_Name = tbxCharName.Text;
-            //double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
-            //string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
-            //string start_Location = "Erde/Orbit Markt";
-
-            //char1 in txt Datei schreiben 
-            //StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
-
-            //sw.WriteLine(Cha.Name);
-            //sw.WriteLine(Cha.Kapital);
-            //sw.WriteLine(Cha.Raumschiff);
-            //sw.WriteLine(Cha.Location);
-
-            //sw.Close();
-
             //Close newChar öffne CharSheet
             this.Hide();
 
             frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-            
 
             charSheet.Closed += (s, args) => this.Close();
             charSheet.Show();

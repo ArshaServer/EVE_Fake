@@ -88,34 +88,6 @@ namespace EVE_Fake
         }
 #endregion
 
-        #region ToolStripItems
-
-        //private void tsiGroßeMap_Click(object sender, EventArgs e)
-        //{
-
-        //    //Weg zur Großen Map
-        //    this.Hide();
-
-        //    frmGroßeMap großeMap = new frmGroßeMap();
-
-        //    großeMap.Hide();
-
-        //    großeMap.Closed += (s, args) => this.Close();
-        //    großeMap.Show();
-            
-        //}
-                  
-        //private void tsiInfo_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-                            
-        //    frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-        //    charSheet.Closed += (s, args) => this.Close();
-        //    charSheet.Show();
-        //}
-#endregion
-
         public frmCharacter_Sheet()
         {
             InitializeComponent();
@@ -128,7 +100,6 @@ namespace EVE_Fake
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
             TopBar charBar = new TopBar(frm1);
             Controls.Add(charBar.mnsCharSheet);
-            
         }
 
         //protected override void OnPaint(PaintEventArgs e)
@@ -147,10 +118,8 @@ namespace EVE_Fake
 
         private void btnAsteroid_Click(object sender, EventArgs e)
         {
-
             tmrMining.Start();
             btnAsteroid.Hide();
-
         }
 
         private void tmrMining_Tick(object sender, EventArgs e)
