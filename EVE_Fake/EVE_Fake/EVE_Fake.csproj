@@ -143,6 +143,7 @@
     <None Include="Resources\Mars.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DatenSpeicher\CharacterOne.xml" />
     <Content Include="Resources\CharDaten.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -157,5 +158,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
