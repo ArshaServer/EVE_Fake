@@ -64,14 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
-    <Compile Include="DBCharakterDataSet.cs">
-      <DependentUpon>DBCharakterDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBCharakterDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCharakterDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Character_Sheet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,17 +123,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DBCharakterDataSet.xsc">
-      <DependentUpon>DBCharakterDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DBCharakterDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBCharakterDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBCharakterDataSet.xss">
-      <DependentUpon>DBCharakterDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,13 +143,7 @@
     <None Include="Resources\Mars.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBCharakter.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DBCharakter_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>DBCharakter.mdf</DependentUpon>
-    </Content>
+    <None Include="DatenSpeicher\CharacterOne.xml" />
     <Content Include="Resources\CharDaten.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -183,5 +158,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

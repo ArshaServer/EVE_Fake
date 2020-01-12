@@ -61,6 +61,29 @@ namespace EVE_Fake.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;CharakterList title=&quot;Charaktere&quot;&gt;
+        ///  &lt;Charakter id=&quot;0&quot;&gt;
+        ///    &lt;Name&gt;Finn&lt;/Name&gt;
+        ///    &lt;Money&gt;1234&lt;/Money&gt;
+        ///    &lt;Raumschiff_id&gt;0&lt;/Raumschiff_id&gt;
+        ///    &lt;Location_id&gt;0&lt;/Location_id&gt;
+        ///  &lt;/Charakter&gt;
+        ///  &lt;Charakter id=&quot;1&quot;&gt;
+        ///    &lt;Name&gt;Finney&lt;/Name&gt;
+        ///    &lt;Money&gt;342&lt;/Money&gt;
+        ///    &lt;Raumschiff_id&gt;0&lt;/Raumschiff_id&gt;
+        ///    &lt;Location_id&gt;0&lt;/Location_id&gt;
+        ///  &lt;/Charakter&gt;
+        ///&lt;/CharakterList&gt; ähnelt.
+        /// </summary>
+        internal static string CharacterOne {
+            get {
+                return ResourceManager.GetString("CharacterOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Erde {

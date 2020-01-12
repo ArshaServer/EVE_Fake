@@ -100,39 +100,15 @@ namespace EVE_Fake
         {
             InitializeComponent();
 
-            //ReadTxt();
-
-                        
+            ReadTxt();        
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
             TopBar charBar = new TopBar(frm1);
-            this.Controls.Add(charBar.mnsCharSheet);
-            MySqlConnection connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=db_eve_fake");
-
-            connection.Open();
-            //if = ob connection offen ist
-            if(connection.State == ConnectionState.Open)
-            {
-
-            }
-            else
-            {
-
-            }
+            Controls.Add(charBar.mnsCharSheet);
             
-
-            MySqlCommand cmdLesen = new MySqlCommand("Select * from Charakter", connection);
-            MySqlDataReader dataReader = cmdLesen.ExecuteReader();
-
-            while(dataReader.Read())
-            {
-                tbxCharName.Text = dataReader.GetString(1);
-            }
-            
-            connection.Close();
         }
 
         //protected override void OnPaint(PaintEventArgs e)

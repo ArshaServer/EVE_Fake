@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<CharakterList title="Charaktere">
+  <Charakter id="0">
+    <Name>Finn</Name>
+    <Money>1234</Money>
+    <Raumschiff_id>0</Raumschiff_id>
+    <Location_id>0</Location_id>
+  </Charakter>
+  <Charakter id="1">
+    <Name>Finney</Name>
+    <Money>342</Money>
+    <Raumschiff_id>0</Raumschiff_id>
+    <Location_id>0</Location_id>
+  </Charakter>
+</CharakterList>
