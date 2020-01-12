@@ -31,12 +31,13 @@
             this.lbxMarket = new System.Windows.Forms.ListBox();
             this.lbLocationName = new System.Windows.Forms.Label();
             this.tbxLocationName = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
             // 
             // lbxMarket
             // 
             this.lbxMarket.FormattingEnabled = true;
-            this.lbxMarket.Location = new System.Drawing.Point(512, 12);
+            this.lbxMarket.Location = new System.Drawing.Point(512, 27);
             this.lbxMarket.Name = "lbxMarket";
             this.lbxMarket.Size = new System.Drawing.Size(276, 381);
             this.lbxMarket.TabIndex = 0;
@@ -44,7 +45,7 @@
             // lbLocationName
             // 
             this.lbLocationName.AutoSize = true;
-            this.lbLocationName.Location = new System.Drawing.Point(13, 13);
+            this.lbLocationName.Location = new System.Drawing.Point(12, 24);
             this.lbLocationName.Name = "lbLocationName";
             this.lbLocationName.Size = new System.Drawing.Size(79, 13);
             this.lbLocationName.TabIndex = 1;
@@ -52,11 +53,19 @@
             // 
             // tbxLocationName
             // 
-            this.tbxLocationName.Location = new System.Drawing.Point(99, 13);
+            this.tbxLocationName.Location = new System.Drawing.Point(98, 24);
             this.tbxLocationName.Name = "tbxLocationName";
             this.tbxLocationName.ReadOnly = true;
             this.tbxLocationName.Size = new System.Drawing.Size(100, 20);
             this.tbxLocationName.TabIndex = 2;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // frmLocalMap
             // 
@@ -66,6 +75,8 @@
             this.Controls.Add(this.tbxLocationName);
             this.Controls.Add(this.lbLocationName);
             this.Controls.Add(this.lbxMarket);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmLocalMap";
             this.Text = "LocalMap";
             this.Load += new System.EventHandler(this.frmLocalMap_Load);
@@ -79,5 +90,6 @@
         private System.Windows.Forms.ListBox lbxMarket;
         private System.Windows.Forms.Label lbLocationName;
         private System.Windows.Forms.TextBox tbxLocationName;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

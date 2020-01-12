@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Xml.Serialization;
 
 namespace EVE_Fake
 {
@@ -17,6 +17,26 @@ namespace EVE_Fake
 
 
         #region Methoden
+        public void LoadXml()
+        {
+            if(File.Exists("CharacterOne.xml"))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(Character));
+                FileStream read = new FileStream("CharacterOne.xml", FileMode.Open, FileAccess.Read, FileShare.Read);
+                Character cac = (Character)xs.Deserialize(read);
+
+                tbxCharName.Text = cac.Name;
+                tbxMoney.Text = cac.Kapital.ToString();
+                tbxRaumschiff.Text = cac.Raumschiff;
+                tbxLocation.Text = cac.Location;
+            }
+            else
+            {
+                MessageBox.Show("Kann kein SaveGame Laden");
+            }
+            
+        }
+
         public void ReadTxt()
         {
             StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
@@ -68,39 +88,11 @@ namespace EVE_Fake
         }
 #endregion
 
-        #region ToolStripItems
-
-        //private void tsiGroßeMap_Click(object sender, EventArgs e)
-        //{
-
-        //    //Weg zur Großen Map
-        //    this.Hide();
-
-        //    frmGroßeMap großeMap = new frmGroßeMap();
-
-        //    großeMap.Hide();
-
-        //    großeMap.Closed += (s, args) => this.Close();
-        //    großeMap.Show();
-            
-        //}
-                  
-        //private void tsiInfo_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-                            
-        //    frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-        //    charSheet.Closed += (s, args) => this.Close();
-        //    charSheet.Show();
-        //}
-#endregion
-
         public frmCharacter_Sheet()
         {
             InitializeComponent();
 
-            ReadTxt();        
+            LoadXml();      
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
@@ -108,7 +100,6 @@ namespace EVE_Fake
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
             TopBar charBar = new TopBar(frm1);
             Controls.Add(charBar.mnsCharSheet);
-            
         }
 
         //protected override void OnPaint(PaintEventArgs e)
@@ -127,10 +118,8 @@ namespace EVE_Fake
 
         private void btnAsteroid_Click(object sender, EventArgs e)
         {
-
             tmrMining.Start();
             btnAsteroid.Hide();
-
         }
 
         private void tmrMining_Tick(object sender, EventArgs e)

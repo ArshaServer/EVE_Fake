@@ -88,6 +88,7 @@ namespace EVE_Fake
             tsiLocalMap.Name = "tsiLocaleMap";
             tsiLocalMap.Size = new Size(135, 22);
             tsiLocalMap.Text = "Locale Map";
+            tsiLocalMap.Click += new EventHandler(tsiLocalMap_Click);
 
             //Test Button
             //btn234.Location = new Point(0, 50);
@@ -111,6 +112,13 @@ namespace EVE_Fake
             buttonClick = true;
             frmCharacter_Sheet frmChar = new frmCharacter_Sheet();
             OpenAndCloseForm(frmChar, buttonClick);
+        }
+
+        private void tsiLocalMap_Click(object sender, EventArgs e)
+        {
+            buttonClick = true;
+            Forms.frmLocalMap frmlcl = new Forms.frmLocalMap();
+            OpenAndCloseForm(frmlcl, buttonClick);
         }
         #endregion
     }

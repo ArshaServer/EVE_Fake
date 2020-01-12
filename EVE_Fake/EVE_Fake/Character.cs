@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EVE_Fake
 {
-    class Character
+    public class Character
     {
 
         //attribute
@@ -42,10 +42,15 @@ namespace EVE_Fake
         }
 
         //Konstruktor 
+        public Character()
+        {
+
+        }
+
         public Character(string nameChar, double startkapital, string erstesRaumschiff, string AnfangsLocation)
         {
             name = nameChar;
-            startkapital = kapital;
+            kapital = startkapital;
             raumschiff = erstesRaumschiff;
             location = AnfangsLocation;
         }
