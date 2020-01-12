@@ -34,23 +34,38 @@ namespace EVE_Fake
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            
-            //Character erstellen
-            string char_Name = tbxCharName.Text;
-            double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
-            string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
-            string start_Location = "Erde/Orbit Markt";
 
+            try
+            {
+                Character Cha = new Character();
+                Cha.Name = tbxCharName.Text;
+                Cha.Kapital = Convert.ToDouble(tbxStartKapital.Text);
+                Cha.Raumschiff = clbNewCharRaumschiffe.Text;
+                Cha.Location = "Erde/Orbit Markt";
+
+                XMLDatenSicherung.DatenSichern(Cha, "CharacterOne.xml");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Charakter Speicherung Fehlgeschlagen: " + ex.Message);
+            }
+
+
+            //Character erstellen
+            //string char_Name = tbxCharName.Text;
+            //double starter_Kapital = Convert.ToDouble(tbxStartKapital.Text);
+            //string erstes_Raumschiff = clbNewCharRaumschiffe.Text;
+            //string start_Location = "Erde/Orbit Markt";
 
             //char1 in txt Datei schreiben 
-            StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
-            
-            sw.WriteLine(char_Name);
-            sw.WriteLine(starter_Kapital);
-            sw.WriteLine(erstes_Raumschiff);
-            sw.WriteLine(start_Location);
+            //StreamWriter sw = new StreamWriter(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
 
-            sw.Close();
+            //sw.WriteLine(Cha.Name);
+            //sw.WriteLine(Cha.Kapital);
+            //sw.WriteLine(Cha.Raumschiff);
+            //sw.WriteLine(Cha.Location);
+
+            //sw.Close();
 
             //Close newChar öffne CharSheet
             this.Hide();

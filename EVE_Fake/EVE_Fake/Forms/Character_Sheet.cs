@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Xml.Serialization;
 
 namespace EVE_Fake
 {
@@ -17,6 +17,26 @@ namespace EVE_Fake
 
 
         #region Methoden
+        public void LoadXml()
+        {
+            if(File.Exists("CharacterOne.xml"))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(Character));
+                FileStream read = new FileStream("CharacterOne.xml", FileMode.Open, FileAccess.Read, FileShare.Read);
+                Character cac = (Character)xs.Deserialize(read);
+
+                tbxCharName.Text = cac.Name;
+                tbxMoney.Text = cac.Kapital.ToString();
+                tbxRaumschiff.Text = cac.Raumschiff;
+                tbxLocation.Text = cac.Location;
+            }
+            else
+            {
+                MessageBox.Show("Kann kein SaveGame Laden");
+            }
+            
+        }
+
         public void ReadTxt()
         {
             StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
@@ -100,7 +120,7 @@ namespace EVE_Fake
         {
             InitializeComponent();
 
-            ReadTxt();        
+            LoadXml();      
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
