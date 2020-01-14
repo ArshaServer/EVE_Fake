@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace EVE_Fake.Forms
 {
@@ -19,9 +21,25 @@ namespace EVE_Fake.Forms
 
         private void frmLocalMap_Load(object sender, EventArgs e)
         {
+            //MenuStrip
             frmLocalMap frm1 = new frmLocalMap();
             TopBar topBarLocalMap = new TopBar(frm1);
-            this.Controls.Add(topBarLocalMap.mnsCharSheet);
+            Controls.Add(topBarLocalMap.mnsCharSheet);
+
+            if (File.Exists("CharacterOne.xml"))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(Character));
+                FileStream read = new FileStream("CharacterOne.xml", FileMode.Open, FileAccess.Read, FileShare.Read);
+                Character cac = (Character)xs.Deserialize(read);
+
+                lblLocationName.Text = cac.Location;
+            }
+            else
+            {
+                MessageBox.Show("Kann kein SaveGame Laden");
+            }
+
+
         }
     }
 }

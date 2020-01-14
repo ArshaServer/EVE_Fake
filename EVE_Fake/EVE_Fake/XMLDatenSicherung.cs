@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace EVE_Fake
 {
@@ -17,5 +18,6 @@ namespace EVE_Fake
             sr.Serialize(writer, obj);
             writer.Close();
         }
+
     }
 }
