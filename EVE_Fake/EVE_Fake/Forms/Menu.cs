@@ -17,6 +17,16 @@ namespace EVE_Fake
             InitializeComponent();
         }
 
+        private void CharErstellen()
+        {
+            this.Hide();
+
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+
+            charSheet.Closed += (s, args) => this.Close();
+            charSheet.Show();
+        }
+
         private void btnNewGame_Click(object sender, EventArgs e)
         {
             //hide frm menue
@@ -31,12 +41,12 @@ namespace EVE_Fake
 
         private void btnCharacterOne_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            CharErstellen();
+        }
 
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-            charSheet.Closed += (s, args) => this.Close();
-            charSheet.Show();
+        private void btnCharacterTwo_Click(object sender, EventArgs e)
+        {
+            CharErstellen();
         }
     }
 }

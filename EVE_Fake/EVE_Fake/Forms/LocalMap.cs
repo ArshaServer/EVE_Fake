@@ -26,20 +26,8 @@ namespace EVE_Fake.Forms
             TopBar topBarLocalMap = new TopBar(frm1);
             Controls.Add(topBarLocalMap.mnsCharSheet);
 
-            if (File.Exists("CharacterOne.xml"))
-            {
-                XmlSerializer xs = new XmlSerializer(typeof(Character));
-                FileStream read = new FileStream("CharacterOne.xml", FileMode.Open, FileAccess.Read, FileShare.Read);
-                Character cac = (Character)xs.Deserialize(read);
-
-                lblLocationName.Text = cac.Location;
-            }
-            else
-            {
-                MessageBox.Show("Kann kein SaveGame Laden");
-            }
-
-
+            
+            LocalMapFrm lmf = new LocalMapFrm(lblLocationName);
         }
     }
 }

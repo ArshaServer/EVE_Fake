@@ -30,6 +30,7 @@
         {
             this.btnNewGame = new System.Windows.Forms.Button();
             this.btnCharacterOne = new System.Windows.Forms.Button();
+            this.btnCharacterTwo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewGame
@@ -53,11 +54,22 @@
             this.btnCharacterOne.UseVisualStyleBackColor = true;
             this.btnCharacterOne.Click += new System.EventHandler(this.btnCharacterOne_Click);
             // 
+            // btnCharacterTwo
+            // 
+            this.btnCharacterTwo.Location = new System.Drawing.Point(293, 172);
+            this.btnCharacterTwo.Name = "btnCharacterTwo";
+            this.btnCharacterTwo.Size = new System.Drawing.Size(218, 53);
+            this.btnCharacterTwo.TabIndex = 2;
+            this.btnCharacterTwo.Text = "Character two";
+            this.btnCharacterTwo.UseVisualStyleBackColor = true;
+            this.btnCharacterTwo.Click += new System.EventHandler(this.btnCharacterTwo_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 449);
+            this.Controls.Add(this.btnCharacterTwo);
             this.Controls.Add(this.btnCharacterOne);
             this.Controls.Add(this.btnNewGame);
             this.Name = "frmMenu";
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.Button btnNewGame;
         private System.Windows.Forms.Button btnCharacterOne;
+        private System.Windows.Forms.Button btnCharacterTwo;
     }
 }
 
