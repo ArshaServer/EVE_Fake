@@ -10,13 +10,18 @@ namespace EVE_Fake
     {
 
         //attribute
+        private string id;
         private string name;
         private double kapital;
         private string raumschiff;
         private string location;
 
-
-        //public machen
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        
         public string Name
         {
             get { return name; }
@@ -47,12 +52,13 @@ namespace EVE_Fake
 
         }
 
-        public Character(string nameChar, double startkapital, string erstesRaumschiff, string AnfangsLocation)
+        public Character(string nameChar, double startkapital, string erstesRaumschiff, string AnfangsLocation, string CharId)
         {
             name = nameChar;
             kapital = startkapital;
             raumschiff = erstesRaumschiff;
             location = AnfangsLocation;
+            id = CharId;
         }
             
             

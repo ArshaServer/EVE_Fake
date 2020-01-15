@@ -14,20 +14,23 @@ namespace EVE_Fake.Forms
 {
     public partial class frmLocalMap : Form
     {
-        public frmLocalMap()
+        public string characterId;
+
+        public frmLocalMap(string CharId)
         {
             InitializeComponent();
+
+            characterId = CharId;
+
+            LocalMapFrm lmf = new LocalMapFrm(lblLocationName);
         }
 
         private void frmLocalMap_Load(object sender, EventArgs e)
         {
             //MenuStrip
-            frmLocalMap frm1 = new frmLocalMap();
-            TopBar topBarLocalMap = new TopBar(frm1);
+            frmLocalMap frm1 = new frmLocalMap(characterId);
+            TopBar topBarLocalMap = new TopBar(frm1, characterId);
             Controls.Add(topBarLocalMap.mnsCharSheet);
-
-            
-            LocalMapFrm lmf = new LocalMapFrm(lblLocationName);
         }
     }
 }

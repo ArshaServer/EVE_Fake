@@ -14,21 +14,24 @@ namespace EVE_Fake
 {
     public partial class frmCharacter_Sheet : Form
     {
-
+        public string characterID;
 
         #region Methoden
-        public void LoadXml()
+        public void LoadXml(string filename)
         {
-            if(File.Exists("CharacterOne.xml"))
+            if(File.Exists(filename))
             {
                 XmlSerializer xs = new XmlSerializer(typeof(Character));
-                FileStream read = new FileStream("CharacterOne.xml", FileMode.Open, FileAccess.Read, FileShare.Read);
+                FileStream read = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
                 Character cac = (Character)xs.Deserialize(read);
 
                 tbxCharName.Text = cac.Name;
                 tbxMoney.Text = cac.Kapital.ToString();
                 tbxRaumschiff.Text = cac.Raumschiff;
                 tbxLocation.Text = cac.Location;
+                string id = cac.Id;
+
+                read.Close();
             }
             else
             {
@@ -88,17 +91,18 @@ namespace EVE_Fake
         }
 #endregion
 
-        public frmCharacter_Sheet()
+        public frmCharacter_Sheet(string CharId)
         {
             InitializeComponent();
 
-            LoadXml();      
+            characterID = CharId;
+            LoadXml(CharId);      
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
-            frmCharacter_Sheet frm1 = new frmCharacter_Sheet();
-            TopBar charBar = new TopBar(frm1);
+            frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
+            TopBar charBar = new TopBar(frm1, characterID);
             Controls.Add(charBar.mnsCharSheet);
         }
 

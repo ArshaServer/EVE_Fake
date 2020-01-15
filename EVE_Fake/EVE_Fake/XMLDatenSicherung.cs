@@ -11,6 +11,7 @@ namespace EVE_Fake
 {
     public class XMLDatenSicherung
     {
+
         public static void DatenSichern(object obj, string filename)
         {
             XmlSerializer sr = new XmlSerializer(obj.GetType());

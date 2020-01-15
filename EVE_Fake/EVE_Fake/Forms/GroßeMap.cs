@@ -12,12 +12,20 @@ namespace EVE_Fake
 {
     public partial class frmGroßeMap : Form
     {
-        public frmGroßeMap()
+        public frmGroßeMap(string CharId)
         {
             InitializeComponent();
 
+            frmGroßeMap frm1 = new frmGroßeMap(CharId);
+            TopBar ObenLeiste = new TopBar(frm1, CharId);
+            this.Controls.Add(ObenLeiste.mnsCharSheet);
             //Ausgewählter Planet Animation
             tmrSelectedPlanet.Start();
+        }
+
+        private void frmGroßeMap_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnErde_Click(object sender, EventArgs e)
@@ -53,11 +61,5 @@ namespace EVE_Fake
             //charSheet.Show();
         }
 
-        private void frmGroßeMap_Load(object sender, EventArgs e)
-        {
-            frmGroßeMap frm1 = new frmGroßeMap();
-            TopBar ObenLeiste = new TopBar(frm1);
-            this.Controls.Add(ObenLeiste.mnsCharSheet);
-        }
     }
 }

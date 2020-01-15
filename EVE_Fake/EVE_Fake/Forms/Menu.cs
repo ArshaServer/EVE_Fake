@@ -17,11 +17,11 @@ namespace EVE_Fake
             InitializeComponent();
         }
 
-        private void CharErstellen()
+        private void CharErstellen(string id)
         {
             this.Hide();
 
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(id);
 
             charSheet.Closed += (s, args) => this.Close();
             charSheet.Show();
@@ -41,12 +41,17 @@ namespace EVE_Fake
 
         private void btnCharacterOne_Click(object sender, EventArgs e)
         {
-            CharErstellen();
+            CharErstellen("CharacterOne.xml");
         }
 
         private void btnCharacterTwo_Click(object sender, EventArgs e)
         {
-            CharErstellen();
+            CharErstellen("CharacterTwo.xml");
+        }
+    
+        private void btnCharacterthree_Click(object sender, EventArgs e)
+        {
+            CharErstellen("CharacterThree.xml");
         }
     }
 }
