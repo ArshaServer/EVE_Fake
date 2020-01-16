@@ -13,15 +13,16 @@ namespace EVE_Fake
 {
     public partial class New_Character : Form
     {
+        DBMethoden dbm = new DBMethoden();
+
         public New_Character()
         {
-
             //Raumschiffe in clb Box hinzufügen
             InitializeComponent();
             List<string> raumschiffe = new List<string>();
             List<string> ids = new List<string>();
-            raumschiffe.Add("kapsel");
-            raumschiffe.Add("Frachter");
+            raumschiffe.Add(dbm.EinWert("R_Name", "tblRaumschiff", "R_Id", "0"));
+            raumschiffe.Add(dbm.EinWert("R_Name", "tblRaumschiff", "R_Id", "1"));
             ids.Add("1");
             ids.Add("2");
             ids.Add("3");
@@ -47,7 +48,7 @@ namespace EVE_Fake
                 Cha.Name = tbxCharName.Text;
                 Cha.Kapital = Convert.ToDouble(tbxStartKapital.Text);
                 Cha.Raumschiff = clbNewCharRaumschiffe.Text;
-                Cha.Location = "Erde/Orbit Markt";
+                Cha.Location = dbm.EinWert("P_Name", "tblPlanet", "P_Id", "0");
                 Cha.Id = clbCharSlot.Text;
 
                 if(Cha.Id == "1")

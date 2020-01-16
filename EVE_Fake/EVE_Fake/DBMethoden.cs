@@ -46,10 +46,10 @@ namespace EVE_Fake
             connection.Close();
         }
 
-        public string EinWert(string spalte, string planet, string whereAbfrage, string whereBedingung)
+        public string EinWert(string spalte, string table, string whereAbfrage, string whereBedingung)
         {
             string ausgabe = "Penis";
-            SelectMYSql = "Select " + spalte + " from " + planet + " where " + whereAbfrage + " = " + whereBedingung;
+            SelectMYSql = "Select " + spalte + " from " + table + " where " + whereAbfrage + " = " + whereBedingung;
             OpenDB();
             MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
             MySqlDataReader dataReader = cmdLesen.ExecuteReader();
