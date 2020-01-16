@@ -31,6 +31,7 @@
             this.btnNewGame = new System.Windows.Forms.Button();
             this.btnCharacterOne = new System.Windows.Forms.Button();
             this.btnCharacterTwo = new System.Windows.Forms.Button();
+            this.btnCharacterthree = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewGame
@@ -64,11 +65,22 @@
             this.btnCharacterTwo.UseVisualStyleBackColor = true;
             this.btnCharacterTwo.Click += new System.EventHandler(this.btnCharacterTwo_Click);
             // 
+            // btnCharacterthree
+            // 
+            this.btnCharacterthree.Location = new System.Drawing.Point(293, 231);
+            this.btnCharacterthree.Name = "btnCharacterthree";
+            this.btnCharacterthree.Size = new System.Drawing.Size(218, 53);
+            this.btnCharacterthree.TabIndex = 3;
+            this.btnCharacterthree.Text = "Character three";
+            this.btnCharacterthree.UseVisualStyleBackColor = true;
+            this.btnCharacterthree.Click += new System.EventHandler(this.btnCharacterthree_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 449);
+            this.Controls.Add(this.btnCharacterthree);
             this.Controls.Add(this.btnCharacterTwo);
             this.Controls.Add(this.btnCharacterOne);
             this.Controls.Add(this.btnNewGame);
@@ -83,6 +95,7 @@
         private System.Windows.Forms.Button btnNewGame;
         private System.Windows.Forms.Button btnCharacterOne;
         private System.Windows.Forms.Button btnCharacterTwo;
+        private System.Windows.Forms.Button btnCharacterthree;
     }
 }
 

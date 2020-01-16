@@ -36,6 +36,8 @@
             this.clbNewCharRaumschiffe = new System.Windows.Forms.CheckedListBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnCancle = new System.Windows.Forms.Button();
+            this.lblCharSlot = new System.Windows.Forms.Label();
+            this.clbCharSlot = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // lblCharName
@@ -51,7 +53,7 @@
             // tbxCharName
             // 
             this.tbxCharName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxCharName.Location = new System.Drawing.Point(168, 11);
+            this.tbxCharName.Location = new System.Drawing.Point(207, 13);
             this.tbxCharName.Name = "tbxCharName";
             this.tbxCharName.Size = new System.Drawing.Size(120, 29);
             this.tbxCharName.TabIndex = 1;
@@ -71,7 +73,7 @@
             // 
             this.lblStartKapital.AutoSize = true;
             this.lblStartKapital.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStartKapital.Location = new System.Drawing.Point(13, 55);
+            this.lblStartKapital.Location = new System.Drawing.Point(13, 53);
             this.lblStartKapital.Name = "lblStartKapital";
             this.lblStartKapital.Size = new System.Drawing.Size(149, 25);
             this.lblStartKapital.TabIndex = 3;
@@ -80,7 +82,7 @@
             // tbxStartKapital
             // 
             this.tbxStartKapital.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxStartKapital.Location = new System.Drawing.Point(168, 55);
+            this.tbxStartKapital.Location = new System.Drawing.Point(207, 53);
             this.tbxStartKapital.Name = "tbxStartKapital";
             this.tbxStartKapital.Size = new System.Drawing.Size(120, 29);
             this.tbxStartKapital.TabIndex = 4;
@@ -88,7 +90,7 @@
             // clbNewCharRaumschiffe
             // 
             this.clbNewCharRaumschiffe.FormattingEnabled = true;
-            this.clbNewCharRaumschiffe.Location = new System.Drawing.Point(168, 93);
+            this.clbNewCharRaumschiffe.Location = new System.Drawing.Point(207, 93);
             this.clbNewCharRaumschiffe.Name = "clbNewCharRaumschiffe";
             this.clbNewCharRaumschiffe.Size = new System.Drawing.Size(120, 94);
             this.clbNewCharRaumschiffe.TabIndex = 5;
@@ -96,7 +98,7 @@
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(18, 233);
+            this.btnCreate.Location = new System.Drawing.Point(18, 271);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(104, 35);
             this.btnCreate.TabIndex = 6;
@@ -107,7 +109,7 @@
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancle.Location = new System.Drawing.Point(184, 233);
+            this.btnCancle.Location = new System.Drawing.Point(207, 271);
             this.btnCancle.Name = "btnCancle";
             this.btnCancle.Size = new System.Drawing.Size(104, 35);
             this.btnCancle.TabIndex = 7;
@@ -115,11 +117,31 @@
             this.btnCancle.UseVisualStyleBackColor = true;
             this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
+            // lblCharSlot
+            // 
+            this.lblCharSlot.AutoSize = true;
+            this.lblCharSlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharSlot.Location = new System.Drawing.Point(13, 199);
+            this.lblCharSlot.Name = "lblCharSlot";
+            this.lblCharSlot.Size = new System.Drawing.Size(172, 50);
+            this.lblCharSlot.TabIndex = 8;
+            this.lblCharSlot.Text = "Welchen Slot\r\nÜberschreiben:\r\n";
+            // 
+            // clbCharSlot
+            // 
+            this.clbCharSlot.FormattingEnabled = true;
+            this.clbCharSlot.Location = new System.Drawing.Point(207, 199);
+            this.clbCharSlot.Name = "clbCharSlot";
+            this.clbCharSlot.Size = new System.Drawing.Size(120, 64);
+            this.clbCharSlot.TabIndex = 9;
+            // 
             // New_Character
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(602, 391);
+            this.Controls.Add(this.clbCharSlot);
+            this.Controls.Add(this.lblCharSlot);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.clbNewCharRaumschiffe);
@@ -145,5 +167,7 @@
         private System.Windows.Forms.CheckedListBox clbNewCharRaumschiffe;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnCancle;
+        private System.Windows.Forms.Label lblCharSlot;
+        private System.Windows.Forms.CheckedListBox clbCharSlot;
     }
 }

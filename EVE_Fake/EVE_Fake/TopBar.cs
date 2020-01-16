@@ -12,6 +12,7 @@ namespace EVE_Fake
     {
         //
         public bool buttonClick;
+        public string CharId;
 
         //MenuStrip und MenuStrip Items
         public MenuStrip mnsCharSheet = new MenuStrip();
@@ -42,9 +43,10 @@ namespace EVE_Fake
             }
         }
 
-        public TopBar(Form currentForm)
+        public TopBar(Form currentForm, string charId)
         {
             frm1 = currentForm;
+            CharId = charId;
 
             mnsCharSheet.Location = new Point(0, 0);
             mnsCharSheet.Name = "mnsCharSheet";
@@ -73,7 +75,7 @@ namespace EVE_Fake
             tsiGroßeMap,
             tsiLocalMap});
             tsiMap.Name = "tsiMap";
-            tsiMap.Size = new System.Drawing.Size(43, 20);
+            tsiMap.Size = new Size(43, 20);
             tsiMap.Text = "Map";
             // 
             // tsiGroßeMap
@@ -103,21 +105,21 @@ namespace EVE_Fake
         public void tsiGroßeMap_Click(object sender, EventArgs e)
         {
             buttonClick = true;
-            frmGroßeMap frmNeueMap = new frmGroßeMap();
+            frmGroßeMap frmNeueMap = new frmGroßeMap(CharId);
             OpenAndCloseForm(frmNeueMap, buttonClick);
         }
 
         private void tsiInfo_Click(object sender, EventArgs e)
         {
             buttonClick = true;
-            frmCharacter_Sheet frmChar = new frmCharacter_Sheet();
+            frmCharacter_Sheet frmChar = new frmCharacter_Sheet(CharId);
             OpenAndCloseForm(frmChar, buttonClick);
         }
 
         private void tsiLocalMap_Click(object sender, EventArgs e)
         {
             buttonClick = true;
-            Forms.frmLocalMap frmlcl = new Forms.frmLocalMap();
+            Forms.frmLocalMap frmlcl = new Forms.frmLocalMap(CharId);
             OpenAndCloseForm(frmlcl, buttonClick);
         }
         #endregion
