@@ -35,9 +35,9 @@ namespace EVE_Fake
             }
             else
             {
-                MessageBox.Show("Kann kein SaveGame Laden");
+                
             }
-            
+          
         }
 
         public void ReadTxt()
@@ -94,16 +94,15 @@ namespace EVE_Fake
         public frmCharacter_Sheet(string CharId)
         {
             InitializeComponent();
-
             characterID = CharId;
-            LoadXml(CharId);      
         }
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
+            LoadXml(characterID);
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
             TopBar charBar = new TopBar(frm1, characterID);
-            Controls.Add(charBar.mnsCharSheet);
+            Controls.Add(charBar.mnsCharSheet);  
         }
 
         //protected override void OnPaint(PaintEventArgs e)
