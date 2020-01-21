@@ -10,8 +10,7 @@ namespace EVE_Fake
     {
         private string raumschiffId;
         private string raumschiffName;
-        private string raumschiffPreis;
-        private string raumschiffSchnelligkeit;
+        private string raumschiffSchnelligkeitJumps;
 
         public string RaumschiffId
         {
@@ -24,17 +23,11 @@ namespace EVE_Fake
             get { return raumschiffName; }
             set { raumschiffName = value; }
         }
-        
-        public string RaumschiffPreis
-        {
-            get { return raumschiffPreis; }
-            set { raumschiffPreis = value; }
-        }
 
-        public string RaumschiffSchnelligkeit
+        public string RaumschiffSchnelligkeitJumps
         {
-            get { return raumschiffSchnelligkeit; }
-            set { raumschiffSchnelligkeit = value; }
+            get { return raumschiffSchnelligkeitJumps; }
+            set { raumschiffSchnelligkeitJumps = value; }
         }
 
         public Raumschiff()

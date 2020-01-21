@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lbxMarket = new System.Windows.Forms.ListBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lblLocationName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -40,14 +39,6 @@
             this.lbxMarket.Name = "lbxMarket";
             this.lbxMarket.Size = new System.Drawing.Size(276, 381);
             this.lbxMarket.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // lblLocationName
             // 
@@ -66,8 +57,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblLocationName);
             this.Controls.Add(this.lbxMarket);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmLocalMap";
             this.Text = "LocalMap";
             this.Load += new System.EventHandler(this.frmLocalMap_Load);
@@ -79,7 +68,6 @@
         #endregion
 
         private System.Windows.Forms.ListBox lbxMarket;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lblLocationName;
     }
 }

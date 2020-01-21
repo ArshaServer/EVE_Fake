@@ -10,8 +10,8 @@ namespace EVE_Fake
 {
     class DBMethoden
     {
-        public string SelectMYSql;
         MySqlConnection connection;
+
         /// <summary>
         /// Datenbank Öffnen
         /// </summary>
@@ -37,6 +37,7 @@ namespace EVE_Fake
         /// <param name="id"></param>
         public void DBWriteInTbx(TextBox tbx, string spalte, string id)
         {
+            string SelectMYSql;
             SelectMYSql = "Select " + spalte + " from Charakter where id = " + id;
             OpenDB();
             MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
@@ -60,6 +61,7 @@ namespace EVE_Fake
         /// <returns></returns>
         public string EinWert(string spalte, string table, string whereAbfrage, string whereBedingung)
         {
+            string SelectMYSql;
             string ausgabe = "Penis";
             SelectMYSql = "Select " + spalte + " from " + table + " where " + whereAbfrage + " = " + whereBedingung;
             OpenDB();
@@ -82,6 +84,7 @@ namespace EVE_Fake
         /// <returns></returns>
         public string SelectStrgRückgabe(string select)
         {
+            string SelectMYSql;
             string ausgabe = "Kaputt";
             SelectMYSql = select;
             OpenDB();
