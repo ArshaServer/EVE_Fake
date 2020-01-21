@@ -27,6 +27,8 @@ namespace EVE_Fake
             frmGroßeMap frm1 = new frmGroßeMap(CharacterId);
             TopBar ObenLeiste = new TopBar(frm1, CharacterId);
             this.Controls.Add(ObenLeiste.mnsCharSheet);
+
+            Raumschiff rmsch = new Raumschiff();
         }
 
         private void btnErde_Click(object sender, EventArgs e)
@@ -51,16 +53,5 @@ namespace EVE_Fake
             tmrSelctedPlanetSmal.Stop();
 
         }
-
-        private void tsiInfo_Click(object sender, EventArgs e)
-        {
-            //this.Hide();
-
-            //frmCharacter_Sheet charSheet = new frmCharacter_Sheet();
-
-            //charSheet.Closed += (s, args) => this.Close();
-            //charSheet.Show();
-        }
-
     }
 }
