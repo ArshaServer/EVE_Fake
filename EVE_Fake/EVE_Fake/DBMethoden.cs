@@ -12,25 +12,29 @@ namespace EVE_Fake
     {
         public string SelectMYSql;
         MySqlConnection connection;
-
+        /// <summary>
+        /// Datenbank Öffnen
+        /// </summary>
         public void OpenDB()
         {
             try
             {
                 //MySQL Connection
                 connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=db_eve_fake");
-
                 connection.Open();
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("DB Connection Error: " + ex.Message);
             }
-
-        
         }
 
+        /// <summary>
+        /// Wert in tbx schreiben mit einfacher where abfrage
+        /// </summary>
+        /// <param name="tbx"></param>
+        /// <param name="spalte"></param>
+        /// <param name="id"></param>
         public void DBWriteInTbx(TextBox tbx, string spalte, string id)
         {
             SelectMYSql = "Select " + spalte + " from Charakter where id = " + id;
@@ -46,6 +50,14 @@ namespace EVE_Fake
             connection.Close();
         }
 
+        /// <summary>
+        /// Einen Wert Afragen und als string zurückgeben
+        /// </summary>
+        /// <param name="spalte"></param>
+        /// <param name="table"></param>
+        /// <param name="whereAbfrage"></param>
+        /// <param name="whereBedingung"></param>
+        /// <returns></returns>
         public string EinWert(string spalte, string table, string whereAbfrage, string whereBedingung)
         {
             string ausgabe = "Penis";
@@ -63,6 +75,11 @@ namespace EVE_Fake
             return ausgabe;
         }
 
+        /// <summary>
+        /// Ein Wert mit übergabe eines Select statements
+        /// </summary>
+        /// <param name="select"></param>
+        /// <returns></returns>
         public string SelectStrgRückgabe(string select)
         {
             string ausgabe = "Kaputt";
@@ -75,7 +92,8 @@ namespace EVE_Fake
             {
                 ausgabe = dataReader.GetString(0);
             }
-
+            
+            
             connection.Close();
             return ausgabe;
         }

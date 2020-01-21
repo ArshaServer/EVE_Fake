@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Raumschiff.cs" />
     <Compile Include="TopBar.cs" />
     <Compile Include="XMLDatenSicherung.cs" />
     <EmbeddedResource Include="Forms\Character_Sheet.resx">

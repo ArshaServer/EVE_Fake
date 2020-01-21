@@ -10,7 +10,7 @@ namespace EVE_Fake
     class LocalMapFrm
     {
         DBMethoden dbm = new DBMethoden();
-
+        
         public bool LabelVisible = true;
         public string LabelText;
 
@@ -31,6 +31,5 @@ namespace EVE_Fake
         {
             LabelEigenschaften(label, HideLabel);
         }
-
     }
 }
