@@ -14,22 +14,67 @@ namespace EVE_Fake
         public bool LabelVisible = true;
         public string LabelText;
 
-
-        public void LabelEigenschaften(Label lbl, bool visible)
+        /// <summary>
+        /// Convertiert die von den Formen Übergebene characterID
+        /// </summary>
+        /// <param name="charID"></param>
+        /// <returns></returns>
+        public string ConvertCharID(string charID)
         {
-            string select = "Select p.P_Name from tblcharakter c inner join tblplanet p on c.C_Planet_Id = p.P_id where c.C_Id = 0";
+          
+            if(charID == "CharacterOne.xml")
+            {
+                charID = "0";
+            }
+            else if(charID == "CharacterTwo.xml")
+            {
+                charID = "1";
+            }
+            else if(charID == "CharacterThree.xml")
+            {
+                charID = "2";
+            }
+            else
+            {
+                MessageBox.Show("Kann kein Character Laden");
+            }
+            return charID;
+        }
+
+        /// <summary>
+        /// Eigenschaften vom Label Namen der Local Map
+        /// </summary>
+        /// <param name="lbl"></param>
+        /// <param name="visible"></param>
+        /// <param name="charID"></param>
+        public void LabelEigenschaften(Label lbl, bool visible, string charID)
+        {   
+            string select = "Call proCurrentLocation(" + ConvertCharID(charID) + ");";
             lbl.Visible = visible;
             lbl.Text = dbm.SelectStrgRückgabe(select);
         }
-        
-        public LocalMapFrm(Label label)
+
+
+        //Konstruktoren
+        /// <summary>
+        /// Mit Label 
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="charID"></param>
+        public LocalMapFrm(Label label, string charID)
         {
-            LabelEigenschaften(label, LabelVisible);
+            LabelEigenschaften(label, LabelVisible, charID);
         }
 
-        public LocalMapFrm(Label label, bool HideLabel)
+        /// <summary>
+        /// Label Unsichtbar
+        /// </summary>
+        /// <param name="label"></param>
+        /// <param name="HideLabel"></param>
+        /// <param name="charID"></param>
+        public LocalMapFrm(Label label, bool HideLabel, string charID)
         {
-            LabelEigenschaften(label, HideLabel);
+            LabelEigenschaften(label, HideLabel, charID);
         }
     }
 }

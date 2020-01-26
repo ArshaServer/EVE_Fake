@@ -10,7 +10,7 @@ namespace EVE_Fake
 {
     class DBMethoden
     {
-        MySqlConnection connection;
+        private MySqlConnection connection;
 
         /// <summary>
         /// Datenbank Öffnen
@@ -99,6 +99,11 @@ namespace EVE_Fake
             
             connection.Close();
             return ausgabe;
+        }
+
+        public void GetAllLocationsVonAktuellenPlanet()
+        {
+
         }
     }
 }
