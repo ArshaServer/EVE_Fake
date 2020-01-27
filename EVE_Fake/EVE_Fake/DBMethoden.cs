@@ -62,7 +62,7 @@ namespace EVE_Fake
         public string EinWert(string spalte, string table, string whereAbfrage, string whereBedingung)
         {
             string SelectMYSql;
-            string ausgabe = "Penis";
+            string ausgabe = "Konnte Nichts Laden";
             SelectMYSql = "Select " + spalte + " from " + table + " where " + whereAbfrage + " = " + whereBedingung;
             OpenDB();
             MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
@@ -102,6 +102,11 @@ namespace EVE_Fake
         }
 
         public void GetAllLocationsVonAktuellenPlanet()
+        {
+
+        }
+
+        public void UpdateCharacter(int charID)
         {
 
         }

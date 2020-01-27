@@ -46,12 +46,24 @@ namespace EVE_Fake
             set { location = value; }
         }
 
-        //Konstruktor 
+        //Konstruktor
+        /// <summary>
+        /// Konstruktor ohne Übergabewerte
+        /// </summary>
         public Character()
         {
 
         }
 
+
+        /// <summary>
+        /// Konstruktor Alle Übergabewerte
+        /// </summary>
+        /// <param name="nameChar"></param>
+        /// <param name="startkapital"></param>
+        /// <param name="erstesRaumschiff"></param>
+        /// <param name="AnfangsLocation"></param>
+        /// <param name="CharId"></param>
         public Character(string nameChar, double startkapital, string erstesRaumschiff, string AnfangsLocation, string CharId)
         {
             name = nameChar;

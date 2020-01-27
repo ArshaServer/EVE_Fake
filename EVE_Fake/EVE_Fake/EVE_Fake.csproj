@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="CharacterSheetClass.cs" />
     <Compile Include="DBMethoden.cs" />
     <Compile Include="Forms\Character_Sheet.cs">
       <SubType>Form</SubType>
