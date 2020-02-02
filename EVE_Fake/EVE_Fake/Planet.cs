@@ -6,15 +6,21 @@ using System.Threading.Tasks;
 
 namespace EVE_Fake
 {
-    class Planet
+    public class Planet
     {
+        public int PlanetID { get; set; }
         public string PlanetName { get; set; }
         public List<Location> Locations { get; set; }
 
-        public Planet(string Planet, List<Location> locations)
+        public Planet()
         {
-            PlanetName = Planet;
-            Locations = locations;
+
         }
+
+        //public Planet(string Planet, List<Location> locations)
+        //{
+        //    PlanetName = Planet;
+        //    Locations = locations;
+        //}
     }
 }

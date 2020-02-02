@@ -6,35 +6,29 @@ using System.Threading.Tasks;
 
 namespace EVE_Fake
 {
-    class Raumschiff
+    public class Raumschiff
     {
-        private string raumschiffId;
-        private string raumschiffName;
-        private string raumschiffSchnelligkeitJumps;
+        public int Raumschiff_ID { get; set; }
 
-        public string RaumschiffId
-        {
-            get { return raumschiffId; }
-            set { raumschiffId = value; }
-        }
+        public string Raumschiff_Name { get; set; }
 
-        public string RaumschiffName
-        {
-            get { return raumschiffName; }
-            set { raumschiffName = value; }
-        }
-
-        public string RaumschiffSchnelligkeitJumps
-        {
-            get { return raumschiffSchnelligkeitJumps; }
-            set { raumschiffSchnelligkeitJumps = value; }
-        }
+        public double Raumschiff_Jump_schnelligkeit{ get; set; }
 
         public Raumschiff()
         {
-            //string select = "Select R_Id, R_Name, R_Preis, R_Schnelligkeit_Jumps from tblRaumschiff r inner join tblCharacter c on"
-            //DBMethoden dbm = new DBMethoden();
-            //RaumschiffId = dbm.SelectStrgRückgabe()
+
+        }
+
+        //public override string ToString()
+        //{
+        //    return Raumschiff_Name;
+        //}
+
+        public Raumschiff(int raumschiff_id, string raumschiff_name, double raumschiff_jumpSchnelligkeit)
+        {
+            Raumschiff_ID = raumschiff_id;
+            Raumschiff_Name = raumschiff_name;
+            Raumschiff_Jump_schnelligkeit = raumschiff_jumpSchnelligkeit;
         }
     }
 }

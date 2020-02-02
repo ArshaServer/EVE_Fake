@@ -98,6 +98,7 @@
       <DependentUpon>New_Character.cs</DependentUpon>
     </Compile>
     <Compile Include="Location.cs" />
+    <Compile Include="Markt.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

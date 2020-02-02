@@ -6,19 +6,26 @@ using System.Threading.Tasks;
 
 namespace EVE_Fake
 {
-    class Location
+    public class Location
     {
+        public int LocationID { get; set; }
         public string LocationName { get; set; }
-        public string PlanetName { get; set; }
-        public string Markt { get; set; }
-        public string Beschreibung { get; set; }
+        public string LocationBeschreibung { get; set; }
+        public Planet Planet { get; set; }
+        public Markt Markt { get; set; }
+        
+
+        public Location()
+        {
+
+        }
 
         public Location(string NameVonLocation, string NameDesPlaneten, string MarktName, string BeschreibungDesOrtes)
         {
-            LocationName = NameVonLocation;
-            PlanetName = NameDesPlaneten;
-            Markt = MarktName;
-            Beschreibung = BeschreibungDesOrtes;
+            //LocationName = NameVonLocation;
+            //PlanetName = NameDesPlaneten;
+            //Markt = MarktName;
+            //Beschreibung = BeschreibungDesOrtes;
         }
     }
 }

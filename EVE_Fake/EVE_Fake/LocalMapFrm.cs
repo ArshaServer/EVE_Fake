@@ -51,7 +51,7 @@ namespace EVE_Fake
         {   
             string select = "Call proCurrentLocation(" + ConvertCharID(charID) + ");";
             lbl.Visible = visible;
-            lbl.Text = dbm.SelectStrgRückgabe(select);
+            lbl.Text = DBMethoden.SelectStrgRückgabe(select);
         }
 
 

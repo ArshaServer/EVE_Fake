@@ -13,16 +13,20 @@ namespace EVE_Fake
 {
     public partial class New_Character : Form
     {
-        DBMethoden dbm = new DBMethoden();
+
+        Raumschiff raumschiff1 = new Raumschiff();
+        Raumschiff raumschiff2 = new Raumschiff();
 
         public New_Character()
         {
+            DBMethoden.GetRaumschiff(raumschiff1, 0);
+            DBMethoden.GetRaumschiff(raumschiff2, 1);
             //Raumschiffe in clb Box hinzufügen
             InitializeComponent();
             List<string> raumschiffe = new List<string>();
             List<string> ids = new List<string>();
-            raumschiffe.Add(dbm.EinWert("R_Name", "tblRaumschiff", "R_Id", "0"));
-            raumschiffe.Add(dbm.EinWert("R_Name", "tblRaumschiff", "R_Id", "1"));
+            raumschiffe.Add(raumschiff1.Raumschiff_Name);
+            raumschiffe.Add(raumschiff2.Raumschiff_Name);
             ids.Add("1");
             ids.Add("2");
             ids.Add("3");
@@ -41,29 +45,41 @@ namespace EVE_Fake
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            
             string charfile = "failed";
+            int CharacterID;
             try
             {
                 Character Cha = new Character();
+                
+                
                 Cha.Name = tbxCharName.Text;
                 Cha.Kapital = Convert.ToDouble(tbxStartKapital.Text);
-                Cha.Raumschiff = clbNewCharRaumschiffe.Text;
-                Cha.Location = dbm.EinWert("P_Name", "tblPlanet", "P_Id", "0");
+                Cha.Raumschiff = raumschiff1;
+                Cha.Location = DBMethoden.EinWert("P_Name", "tblPlanet", "P_Id", "0");
                 Cha.Id = clbCharSlot.Text;
-
+                
                 if(Cha.Id == "1")
                 {
+                    CharacterID = 0;
+                    //Ignore
                     charfile = "CharacterOne.xml";
                 }
                 else if(Cha.Id == "2")
                 {
+                    CharacterID = 1;
+                    //Ignore
                     charfile = "CharacterTwo.xml";
                 }
                 else if(Cha.Id == "3")
                 {
+                    CharacterID = 2;
+                    //Ignore
                     charfile = "Characterthree.xml";
                 }
 
+                //DBMethoden.UpdateCharacter(Cha.Id, Cha.Name, Cha.Kapital);
+                //Ignore
                 XMLDatenSicherung.DatenSichern(Cha, charfile);
             }
             catch (Exception ex)
