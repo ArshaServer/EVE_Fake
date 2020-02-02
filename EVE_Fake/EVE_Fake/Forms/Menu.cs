@@ -48,7 +48,8 @@ namespace EVE_Fake
 
         private void CharErstellen(int id)
         {
-        
+            this.Hide();
+
             frmCharacter_Sheet charSheet = new frmCharacter_Sheet(id);
 
             charSheet.Closed += (s, args) => this.Close();

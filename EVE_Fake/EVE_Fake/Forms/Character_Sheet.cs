@@ -89,6 +89,16 @@ namespace EVE_Fake
 
             tmrMining.Stop();
         }
+
+        public void CharLaden()
+        {
+            Character character = new Character();
+            DBMethoden.GetCharacter(character, characterID);
+            tbxCharName.Text = character.Name;
+            tbxMoney.Text = character.Kapital.ToString();
+            tbxRaumschiff.Text = character.Raumschiff.Raumschiff_Name;
+            tbxLocation.Text = character.Location.LocationName;
+        }
 #endregion
 
         public frmCharacter_Sheet(int CharId)
@@ -99,7 +109,7 @@ namespace EVE_Fake
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
-            
+            CharLaden();
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
             TopBar charBar = new TopBar(frm1, characterID);
             Controls.Add(charBar.mnsCharSheet);  

@@ -10,11 +10,11 @@ namespace EVE_Fake
     {
 
         //attribute
-        private string id;
+        private int id;
         private string name;
         private float kapital;
 
-        public string Id
+        public int Id
         {
             get { return id; }
             set { id = value; }
@@ -54,7 +54,7 @@ namespace EVE_Fake
         /// <param name="erstesRaumschiff"></param>
         /// <param name="AnfangsLocation"></param>
         /// <param name="CharId"></param>
-        public Character(string nameChar, float startkapital, string CharId)
+        public Character(string nameChar, float startkapital, int CharId)
         {
             name = nameChar;
             kapital = startkapital;

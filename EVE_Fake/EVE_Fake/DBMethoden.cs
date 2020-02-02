@@ -12,9 +12,11 @@ namespace EVE_Fake
     {
         private static Planet planet = new Planet();
         private static Markt markt = new Markt();
-        private static Location locationer = new Location();
+        private static Location location = new Location();
+        private static Raumschiff raumschiff = new Raumschiff();
         private static MySqlConnection connection;
 
+        //Extras
         /// <summary>
         /// Datenbank Öffnen
         /// </summary>
@@ -104,6 +106,8 @@ namespace EVE_Fake
             return ausgabe;
         }
 
+
+        //Alle Update Sachen
         /// <summary>
         /// Alle Character Werte mit übergabe updaten
         /// </summary>
@@ -123,14 +127,16 @@ namespace EVE_Fake
             connection.Close();
         }
 
+
+        //Alle Get Sachen
         /// <summary>
         /// Bestimmtes Raumschiff aus DB laden
         /// </summary>
         /// <param name="raumschiff"></param>
-        public static void GetRaumschiff(Raumschiff raumschiff, int whereWert)
+        public static void GetRaumschiff(Raumschiff raumschiff, int raumschiffID)
         {
             string SelectMYSql;
-            SelectMYSql = "Select * from tblraumschiff where R_id = " + whereWert + ";";
+            SelectMYSql = "Select * from tblraumschiff where R_id = " + raumschiffID + ";";
             OpenDB();
             MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
             MySqlDataReader dataReader = cmdLesen.ExecuteReader();
@@ -210,8 +216,8 @@ namespace EVE_Fake
             while (dataReaderLocations.Read())
             {
                 int locationID = dataReaderLocations.GetInt32(0);
-                GetLocation(locationer, locationID, false);
-                planet.Locations.Add(locationer);
+                GetLocation(location, locationID, false);
+                planet.Locations.Add(location);
             }
 
             connection.Close();
@@ -234,6 +240,33 @@ namespace EVE_Fake
             {
                 markt.MarktID = dataReader.GetInt32(0);
                 markt.MarktName = dataReader.GetString(1);
+            }
+
+            connection.Close();
+        }
+
+        /// <summary>
+        /// Bestimmten Charakter bekommen
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="characterID"></param>
+        public static void GetCharacter(Character character, int characterID)
+        {
+            string SelectMYSql;
+            SelectMYSql = "Select * from tblCharakter where C_id = " + characterID + ";";
+            OpenDB();
+            MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
+            MySqlDataReader dataReader = cmdLesen.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                character.Id = dataReader.GetInt16(0);
+                character.Name = dataReader.GetString(1);
+                character.Kapital = dataReader.GetFloat(2);
+                GetRaumschiff(raumschiff, dataReader.GetInt16(3));
+                character.Raumschiff = raumschiff;
+                GetLocation(location, dataReader.GetInt16(4), true);
+                character.Location = location;
             }
 
             connection.Close();

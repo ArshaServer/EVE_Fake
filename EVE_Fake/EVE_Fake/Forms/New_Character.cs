@@ -53,7 +53,7 @@ namespace EVE_Fake
             int raumschiffID = 0;
             try
             {
-                Cha.Id = clbCharSlot.Text;
+                Cha.Id = Convert.ToInt16(clbCharSlot.Text);
                 Cha.Name = tbxCharName.Text;
                 Cha.Kapital = Convert.ToSingle(tbxStartKapital.Text);
                 if(clbNewCharRaumschiffe.Text == raumschiff1.Raumschiff_Name)
@@ -71,19 +71,19 @@ namespace EVE_Fake
                 
                 
                 //Character ID Konvertieren
-                if(Cha.Id == "1")
+                if(Cha.Id == 1)
                 {
                     CharacterID = 0;
                     //Ignore
                     charfile = "CharacterOne.xml";
                 }
-                else if(Cha.Id == "2")
+                else if(Cha.Id == 2)
                 {
                     CharacterID = 1;
                     //Ignore
                     charfile = "CharacterTwo.xml";
                 }
-                else if(Cha.Id == "3")
+                else if(Cha.Id == 3)
                 {
                     CharacterID = 2;
                     //Ignore
