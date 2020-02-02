@@ -14,7 +14,7 @@ namespace EVE_Fake
 
         public Planet()
         {
-
+            Locations = new List<Location>();
         }
 
         //public Planet(string Planet, List<Location> locations)

@@ -14,31 +14,31 @@ namespace EVE_Fake
 {
     public partial class frmCharacter_Sheet : Form
     {
-        public string characterID;
+        public int characterID;
 
         #region Methoden
-        public void LoadXml(string filename)
-        {
-            if(File.Exists(filename))
-            {
-                XmlSerializer xs = new XmlSerializer(typeof(Character));
-                FileStream read = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
-                Character cac = (Character)xs.Deserialize(read);
+        //public void LoadXml(string filename)
+        //{
+        //    if(File.Exists(filename))
+        //    {
+        //        XmlSerializer xs = new XmlSerializer(typeof(Character));
+        //        FileStream read = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+        //        Character cac = (Character)xs.Deserialize(read);
 
-                tbxCharName.Text = cac.Name;
-                tbxMoney.Text = cac.Kapital.ToString();
-                tbxRaumschiff.Text = cac.Raumschiff;
-                tbxLocation.Text = cac.Location;
-                string id = cac.Id;
+        //        tbxCharName.Text = cac.Name;
+        //        tbxMoney.Text = cac.Kapital.ToString();
+        //        tbxRaumschiff.Text = cac.Raumschiff;
+        //        tbxLocation.Text = cac.Location;
+        //        string id = cac.Id;
 
-                read.Close();
-            }
-            else
-            {
+        //        read.Close();
+        //    }
+        //    else
+        //    {
                 
-            }
+        //    }
           
-        }
+        //}
 
         public void ReadTxt()
         {
@@ -91,7 +91,7 @@ namespace EVE_Fake
         }
 #endregion
 
-        public frmCharacter_Sheet(string CharId)
+        public frmCharacter_Sheet(int CharId)
         {
             InitializeComponent();
             characterID = CharId;
@@ -99,7 +99,7 @@ namespace EVE_Fake
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
-            LoadXml(characterID);
+            //LoadXml(characterID);
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
             TopBar charBar = new TopBar(frm1, characterID);
             Controls.Add(charBar.mnsCharSheet);  

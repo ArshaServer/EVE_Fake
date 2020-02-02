@@ -32,28 +32,28 @@ namespace EVE_Fake
         /// <param name="tbxMoney"></param>
         /// <param name="tbxRaumschiff"></param>
         /// <param name="tbxLocation"></param>
-        public void LoadXmlInCharacterTbx(string filename, TextBox tbxCharName, TextBox tbxMoney, TextBox tbxRaumschiff, TextBox tbxLocation)
-        {
-            if (File.Exists(filename))
-            {
-                XmlSerializer xs = new XmlSerializer(typeof(Character));
-                FileStream read = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
-                Character cac = (Character)xs.Deserialize(read);
+        //public void LoadXmlInCharacterTbx(string filename, TextBox tbxCharName, TextBox tbxMoney, TextBox tbxRaumschiff, TextBox tbxLocation)
+        //{
+        //    if (File.Exists(filename))
+        //    {
+        //        XmlSerializer xs = new XmlSerializer(typeof(Character));
+        //        FileStream read = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
+        //        Character cac = (Character)xs.Deserialize(read);
 
-                tbxCharName.Text = cac.Name;
-                tbxMoney.Text = cac.Kapital.ToString();
-                tbxRaumschiff.Text = cac.Raumschiff;
-                tbxLocation.Text = cac.Location;
-                string id = cac.Id;
+        //        tbxCharName.Text = cac.Name;
+        //        tbxMoney.Text = cac.Kapital.ToString();
+        //        tbxRaumschiff.Text = cac.Raumschiff;
+        //        tbxLocation.Text = cac.Location;
+        //        string id = cac.Id;
 
-                read.Close();
-            }
-            else
-            {
+        //        read.Close();
+        //    }
+        //    else
+        //    {
 
-            }
+        //    }
 
-        }
+        //}
 
         public void UpdateDBMitCharacter(string filename)
         {

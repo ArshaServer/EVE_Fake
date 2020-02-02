@@ -9,10 +9,11 @@ namespace EVE_Fake
 {
     class LocalMapFrm
     {
-        DBMethoden dbm = new DBMethoden();
-        
+
         public bool LabelVisible = true;
         public string LabelText;
+        Planet planet = new Planet();
+        
 
         /// <summary>
         /// Convertiert die von den Formen Übergebene characterID
@@ -47,11 +48,13 @@ namespace EVE_Fake
         /// <param name="lbl"></param>
         /// <param name="visible"></param>
         /// <param name="charID"></param>
-        public void LabelEigenschaften(Label lbl, bool visible, string charID)
-        {   
-            string select = "Call proCurrentLocation(" + ConvertCharID(charID) + ");";
+        public void LabelEigenschaften(Label lbl, bool visible, int charID)
+        {
+            DBMethoden.GetPlanet(planet, 0);
+            string select = "Call proCurrentLocation(" + charID + ");";
             lbl.Visible = visible;
-            lbl.Text = DBMethoden.SelectStrgRückgabe(select);
+            //lbl.Text = DBMethoden.SelectStrgRückgabe(select);
+            lbl.Text = planet.PlanetName;
         }
 
 
@@ -61,7 +64,7 @@ namespace EVE_Fake
         /// </summary>
         /// <param name="label"></param>
         /// <param name="charID"></param>
-        public LocalMapFrm(Label label, string charID)
+        public LocalMapFrm(Label label, int charID)
         {
             LabelEigenschaften(label, LabelVisible, charID);
         }
@@ -72,7 +75,7 @@ namespace EVE_Fake
         /// <param name="label"></param>
         /// <param name="HideLabel"></param>
         /// <param name="charID"></param>
-        public LocalMapFrm(Label label, bool HideLabel, string charID)
+        public LocalMapFrm(Label label, bool HideLabel, int charID)
         {
             LabelEigenschaften(label, HideLabel, charID);
         }

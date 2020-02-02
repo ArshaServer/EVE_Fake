@@ -16,13 +16,16 @@ namespace EVE_Fake
 
         Raumschiff raumschiff1 = new Raumschiff();
         Raumschiff raumschiff2 = new Raumschiff();
+        Location location = new Location();
+        Character Cha = new Character();
 
         public New_Character()
         {
+            InitializeComponent();
+
             DBMethoden.GetRaumschiff(raumschiff1, 0);
             DBMethoden.GetRaumschiff(raumschiff2, 1);
             //Raumschiffe in clb Box hinzufügen
-            InitializeComponent();
             List<string> raumschiffe = new List<string>();
             List<string> ids = new List<string>();
             raumschiffe.Add(raumschiff1.Raumschiff_Name);
@@ -45,20 +48,29 @@ namespace EVE_Fake
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            
             string charfile = "failed";
-            int CharacterID;
+            int CharacterID = 0;
+            int raumschiffID = 0;
             try
             {
-                Character Cha = new Character();
-                
-                
-                Cha.Name = tbxCharName.Text;
-                Cha.Kapital = Convert.ToDouble(tbxStartKapital.Text);
-                Cha.Raumschiff = raumschiff1;
-                Cha.Location = DBMethoden.EinWert("P_Name", "tblPlanet", "P_Id", "0");
                 Cha.Id = clbCharSlot.Text;
+                Cha.Name = tbxCharName.Text;
+                Cha.Kapital = Convert.ToSingle(tbxStartKapital.Text);
+                if(clbNewCharRaumschiffe.Text == raumschiff1.Raumschiff_Name)
+                {
+                    raumschiffID = raumschiff1.Raumschiff_ID;
+                    Cha.Raumschiff = raumschiff1;
+                }
+                else
+                {
+                    raumschiffID = raumschiff2.Raumschiff_ID;
+                    Cha.Raumschiff = raumschiff2;
+                }
+                DBMethoden.GetLocation(location, 0, true);
+                Cha.Location = location;
                 
+                
+                //Character ID Konvertieren
                 if(Cha.Id == "1")
                 {
                     CharacterID = 0;
@@ -78,7 +90,8 @@ namespace EVE_Fake
                     charfile = "Characterthree.xml";
                 }
 
-                //DBMethoden.UpdateCharacter(Cha.Id, Cha.Name, Cha.Kapital);
+                //Character in DB abspeichern
+                DBMethoden.UpdateCharacter(CharacterID, Cha.Name, Cha.Kapital, location.LocationID, raumschiffID);
                 //Ignore
                 XMLDatenSicherung.DatenSichern(Cha, charfile);
             }
@@ -90,7 +103,7 @@ namespace EVE_Fake
             //Close newChar öffne CharSheet
             this.Hide();
 
-            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(charfile);
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(CharacterID);
 
             charSheet.Closed += (s, args) => this.Close();
             charSheet.Show();

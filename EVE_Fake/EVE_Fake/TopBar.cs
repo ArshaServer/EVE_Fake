@@ -12,7 +12,7 @@ namespace EVE_Fake
     {
         //
         public bool buttonClick;
-        public string CharId;
+        public int CharId;
 
         //MenuStrip und MenuStrip Items
         public MenuStrip mnsCharSheet = new MenuStrip();
@@ -43,7 +43,7 @@ namespace EVE_Fake
             }
         }
 
-        public TopBar(Form currentForm, string charId)
+        public TopBar(Form currentForm, int charId)
         {
             frm1 = currentForm;
             CharId = charId;

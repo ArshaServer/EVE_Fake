@@ -10,9 +10,9 @@ namespace EVE_Fake
 {
     public class DBMethoden
     {
-        private static Planet planet;
-        private static Markt markt;
-        private static Location location;
+        private static Planet planet = new Planet();
+        private static Markt markt = new Markt();
+        private static Location locationer = new Location();
         private static MySqlConnection connection;
 
         /// <summary>
@@ -114,14 +114,12 @@ namespace EVE_Fake
         /// <param name="CurrentRaumschiff"></param>
         public static void UpdateCharacter(int charID, string charName, float charMoney, int CurrentLocation, int CurrentRaumschiff)
         {
-            string updatePro = "call proUpdateCharacterAlleDaten(" + charID + "," + charName + "," + charMoney + "," + CurrentLocation + "," + CurrentRaumschiff +"); ";
-            MySqlCommand sqlCommand = new MySqlCommand(updatePro, connection);
+            string updatePro = "call proUpdateCharacterAlleDaten(" + charID + ",'" + charName + "'," + charMoney + "," + CurrentLocation + "," + CurrentRaumschiff +"); ";
             OpenDB();
-            MySqlDataReader dataReader = sqlCommand.ExecuteReader();
-            while(dataReader.Read())
-            {
-
-            }
+            MySqlCommand sqlCommand = new MySqlCommand(updatePro, connection);
+            
+            sqlCommand.ExecuteNonQuery();
+           
             connection.Close();
         }
 
@@ -152,7 +150,7 @@ namespace EVE_Fake
         /// </summary>
         /// <param name="location"></param>
         /// <param name="locationID"></param>
-        public static void GetLocation(Location location, int locationID)
+        public static void GetLocation(Location location, int locationID, bool GetThePlanet)
         {
             string SelectMYSql;
             SelectMYSql = "Select * from tbllocation where L_id = " + locationID + ";";
@@ -165,8 +163,15 @@ namespace EVE_Fake
                 location.LocationID = dataReader.GetInt32(0);
                 location.LocationName = dataReader.GetString(1);
                 location.LocationBeschreibung = dataReader.GetString(2);
-                GetPlanet(planet, dataReader.GetInt32(3));
-                location.Planet = planet;
+                if(GetThePlanet == true)
+                {
+                    GetPlanet(planet, dataReader.GetInt32(3));
+                    location.Planet = planet;
+                }
+                else
+                {
+
+                }
                 GetMarkt(markt, dataReader.GetInt16(4));
                 location.Markt = markt;
             }
@@ -184,25 +189,29 @@ namespace EVE_Fake
             
             string SelectMYSql;
             string SelectMysql2;
-            SelectMYSql = "Select * from tblplanet where L_id = " + planetID + ";";
+            SelectMYSql = "Select * from tblplanet where P_id = " + planetID + ";";
             SelectMysql2 = "call proGetAllLocationsFromPlanet(" + planetID + ");";
             OpenDB();
             MySqlCommand cmdLesenPlanet = new MySqlCommand(SelectMYSql, connection);
-            MySqlCommand cmdLesenLocations = new MySqlCommand(SelectMysql2, connection);
-            MySqlDataReader dataReader = cmdLesenLocations.ExecuteReader();
-            MySqlDataReader dataReaderLocations = cmdLesenLocations.ExecuteReader();
+            
+            MySqlDataReader dataReader = cmdLesenPlanet.ExecuteReader();
+            
 
-            while(dataReader.Read())
+            while (dataReader.Read())
             {
                 planet.PlanetID = dataReader.GetInt32(0);
                 planet.PlanetName = dataReader.GetString(1);
+            }
+            connection.Close();
 
-                while(dataReaderLocations.Read())
-                {
-                    int locationID = dataReaderLocations.GetInt32(0);
-                    GetLocation(location, locationID);
-                    planet.Locations.Add(location);
-                }
+            OpenDB();
+            MySqlCommand cmdLesenLocations = new MySqlCommand(SelectMysql2, connection);
+            MySqlDataReader dataReaderLocations = cmdLesenLocations.ExecuteReader();
+            while (dataReaderLocations.Read())
+            {
+                int locationID = dataReaderLocations.GetInt32(0);
+                GetLocation(locationer, locationID, false);
+                planet.Locations.Add(locationer);
             }
 
             connection.Close();

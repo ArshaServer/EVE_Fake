@@ -12,8 +12,8 @@ namespace EVE_Fake
 {
     public partial class frmGroßeMap : Form
     {
-        public string CharacterId;
-        public frmGroßeMap(string CharId)
+        public int CharacterId;
+        public frmGroßeMap(int CharId)
         {
             InitializeComponent();
 
