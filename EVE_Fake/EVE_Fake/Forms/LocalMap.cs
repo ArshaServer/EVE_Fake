@@ -14,15 +14,16 @@ namespace EVE_Fake.Forms
 {
     public partial class frmLocalMap : Form
     {
-        public string characterId;
+        public int characterId;
 
-        public frmLocalMap(string CharId)
+        public frmLocalMap(int CharId)
         {
             InitializeComponent();
-
+            
             characterId = CharId;
+            
 
-            LocalMapFrm lmf = new LocalMapFrm(lblLocationName);
+            LocalMapFrm lmf = new LocalMapFrm(lblLocationName, Convert.ToInt32(CharId));
         }
 
         private void frmLocalMap_Load(object sender, EventArgs e)

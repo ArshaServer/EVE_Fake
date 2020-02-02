@@ -20,6 +20,7 @@ namespace EVE_Fake
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMenu());
+
         }
 
         

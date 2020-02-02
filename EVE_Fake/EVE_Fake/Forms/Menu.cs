@@ -13,7 +13,6 @@ namespace EVE_Fake
 {
     public partial class frmMenu : Form
     {
-        public string Charfilename;
 
         public frmMenu()
         {
@@ -34,62 +33,56 @@ namespace EVE_Fake
 
         private void btnCharacterOne_Click(object sender, EventArgs e)
         {
-            Charfilename = "CharacterOne.xml";
-            CharErstellen(Charfilename);
+            CharErstellen(0);
         }
 
         private void btnCharacterTwo_Click(object sender, EventArgs e)
         {
-            Charfilename = "CharacterTwo.xml";
-            CharErstellen(Charfilename);
+            CharErstellen(1);
         }
     
         private void btnCharacterthree_Click(object sender, EventArgs e)
         {
-            Charfilename = "CharacterThree.xml";
-            CharErstellen(Charfilename);
+            CharErstellen(2);
         }
 
-        private void CharErstellen(string id)
+        private void CharErstellen(int id)
         {
-            if (File.Exists(Charfilename))
-            {
-                this.Hide();
+        
+            frmCharacter_Sheet charSheet = new frmCharacter_Sheet(id);
 
-                frmCharacter_Sheet charSheet = new frmCharacter_Sheet(id);
-
-                charSheet.Closed += (s, args) => this.Close();
-                charSheet.Show();
-            }
-            else
-            {
-                DialogResult dr;
-                dr = MessageBox.Show("Kann kein SaveGame Laden");
-
-                if (dr == DialogResult.OK)
-                {
-                    //hide frm menue
-                    this.Hide();
-
-                    //Neue Form Erzeugen und alte schließen
-                    frmMenu frm = new frmMenu();
-
-                    frm.Closed += (s, args) => this.Close();
-                    frm.Show();
-                }
-                else
-                {
-                    //hide frm menue
-                    this.Hide();
-
-                    //Neue Form Erzeugen und alte schließen
-                    frmMenu frm = new frmMenu();
-
-                    frm.Closed += (s, args) => this.Close();
-                    frm.Show();
-                }
-            }
+            charSheet.Closed += (s, args) => this.Close();
+            charSheet.Show();
             
+            //else
+            //{
+            //    DialogResult dr;
+            //    dr = MessageBox.Show("Kann kein SaveGame Laden");
+
+            //    if (dr == DialogResult.OK)
+            //    {
+            //        //hide frm menue
+            //        this.Hide();
+
+            //        //Neue Form Erzeugen und alte schließen
+            //        frmMenu frm = new frmMenu();
+
+            //        frm.Closed += (s, args) => this.Close();
+            //        frm.Show();
+            //    }
+            //    else
+            //    {
+            //        //hide frm menue
+            //        this.Hide();
+
+            //        //Neue Form Erzeugen und alte schließen
+            //        frmMenu frm = new frmMenu();
+
+            //        frm.Closed += (s, args) => this.Close();
+            //        frm.Show();
+            //    }
+            //}
+
         }
     }
 }
