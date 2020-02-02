@@ -12,7 +12,7 @@ namespace EVE_Fake
 
         public bool LabelVisible = true;
         public string LabelText;
-        Planet planet = new Planet();
+        Character character = new Character();
         
 
         /// <summary>
@@ -50,11 +50,11 @@ namespace EVE_Fake
         /// <param name="charID"></param>
         public void LabelEigenschaften(Label lbl, bool visible, int charID)
         {
-            DBMethoden.GetPlanet(planet, 0);
-            string select = "Call proCurrentLocation(" + charID + ");";
+            DBMethoden.GetCharacter(character, charID);
+            //string select = "Call proCurrentLocation(" + charID + ");";
             lbl.Visible = visible;
             //lbl.Text = DBMethoden.SelectStrgRückgabe(select);
-            lbl.Text = planet.PlanetName;
+            lbl.Text = character.Location.LocationName;
         }
 
 

@@ -21,9 +21,8 @@ namespace EVE_Fake.Forms
             InitializeComponent();
             
             characterId = CharId;
-            
 
-            LocalMapFrm lmf = new LocalMapFrm(lblLocationName, Convert.ToInt32(CharId));
+            LocalMapFrm lmf = new LocalMapFrm(lblLocationName, characterId);
         }
 
         private void frmLocalMap_Load(object sender, EventArgs e)
