@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 
 namespace EVE_Fake
 {
@@ -13,34 +14,7 @@ namespace EVE_Fake
         public bool LabelVisible = true;
         public string LabelText;
         Character character = new Character();
-        
 
-        /// <summary>
-        /// Convertiert die von den Formen Übergebene characterID
-        /// </summary>
-        /// <param name="charID"></param>
-        /// <returns></returns>
-        public string ConvertCharID(string charID)
-        {
-          
-            if(charID == "CharacterOne.xml")
-            {
-                charID = "0";
-            }
-            else if(charID == "CharacterTwo.xml")
-            {
-                charID = "1";
-            }
-            else if(charID == "CharacterThree.xml")
-            {
-                charID = "2";
-            }
-            else
-            {
-                MessageBox.Show("Kann kein Character Laden");
-            }
-            return charID;
-        }
 
         /// <summary>
         /// Eigenschaften vom Label Namen der Local Map
@@ -48,15 +22,20 @@ namespace EVE_Fake
         /// <param name="lbl"></param>
         /// <param name="visible"></param>
         /// <param name="charID"></param>
-        public void LabelEigenschaften(Label lbl, bool visible, int charID)
+        public void LabelEigenschaften(Label lblLocation, Label lblPlanet, bool visible, int charID)
         {
             DBMethoden.GetCharacter(character, charID);
-            //string select = "Call proCurrentLocation(" + charID + ");";
-            lbl.Visible = visible;
-            //lbl.Text = DBMethoden.SelectStrgRückgabe(select);
-            lbl.Text = character.Location.LocationName;
+            lblLocation.Visible = visible;
+            lblLocation.Text = character.Location.LocationName;
+            lblPlanet.Text = character.Location.Planet.PlanetName;
         }
 
+        public void ComboBoxLocations(ComboBox cbxLocation, Label lblPlanet)
+        {
+            var margin = cbxLocation.Margin;
+            margin.Left = 10;
+            cbxLocation.Margin = margin;
+        }
 
         //Konstruktoren
         /// <summary>
@@ -64,9 +43,9 @@ namespace EVE_Fake
         /// </summary>
         /// <param name="label"></param>
         /// <param name="charID"></param>
-        public LocalMapFrm(Label label, int charID)
+        public LocalMapFrm(Label labelLocation, Label labelPlanet, int charID)
         {
-            LabelEigenschaften(label, LabelVisible, charID);
+            LabelEigenschaften(labelLocation, labelPlanet, LabelVisible, charID);
         }
 
         /// <summary>
@@ -75,9 +54,9 @@ namespace EVE_Fake
         /// <param name="label"></param>
         /// <param name="HideLabel"></param>
         /// <param name="charID"></param>
-        public LocalMapFrm(Label label, bool HideLabel, int charID)
+        public LocalMapFrm(Label labelLocation, Label labelPlanet, bool HideLabel, int charID)
         {
-            LabelEigenschaften(label, HideLabel, charID);
+            LabelEigenschaften(labelLocation, labelPlanet, HideLabel, charID);
         }
     }
 }

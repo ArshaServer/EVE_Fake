@@ -21,8 +21,9 @@ namespace EVE_Fake.Forms
             InitializeComponent();
             
             characterId = CharId;
-
-            LocalMapFrm lmf = new LocalMapFrm(lblLocationName, characterId);
+            
+            LocalMapFrm lmf = new LocalMapFrm(lblLocationName, lblPlanetName, characterId);
+            lmf.ComboBoxLocations(cbxLocations, lblPlanetName);
         }
 
         private void frmLocalMap_Load(object sender, EventArgs e)
