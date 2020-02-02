@@ -40,22 +40,22 @@ namespace EVE_Fake
           
         //}
 
-        public void ReadTxt()
-        {
-            StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
+        //public void ReadTxt()
+        //{
+        //    StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
 
-            string CharName = sr.ReadLine();
-            string Wert = sr.ReadLine();
-            string Raumschiff = sr.ReadLine();
-            string Location = sr.ReadLine();
+        //    string CharName = sr.ReadLine();
+        //    string Wert = sr.ReadLine();
+        //    string Raumschiff = sr.ReadLine();
+        //    string Location = sr.ReadLine();
 
-            tbxCharName.Text = CharName;
-            tbxMoney.Text = Wert;
-            tbxRaumschiff.Text = Raumschiff;
-            tbxLocation.Text = Location;
+        //    tbxCharName.Text = CharName;
+        //    tbxMoney.Text = Wert;
+        //    tbxRaumschiff.Text = Raumschiff;
+        //    tbxLocation.Text = Location;
 
-            sr.Close();
-        }
+        //    sr.Close();
+        //}
 
         public void AsteroidPlusEinGeld()
         {
@@ -99,7 +99,7 @@ namespace EVE_Fake
 
         private void frmCharacter_Sheet_Load(object sender, EventArgs e)
         {
-            //LoadXml(characterID);
+            
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
             TopBar charBar = new TopBar(frm1, characterID);
             Controls.Add(charBar.mnsCharSheet);  
