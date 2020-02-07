@@ -14,7 +14,7 @@ namespace EVE_Fake
         public bool LabelVisible = true;
         public string LabelText;
         Character character = new Character();
-
+        Planet planet = new Planet();
 
         /// <summary>
         /// Eigenschaften vom Label Namen der Local Map
@@ -30,11 +30,22 @@ namespace EVE_Fake
             lblPlanet.Text = character.Location.Planet.PlanetName;
         }
 
-        public void ComboBoxLocations(ComboBox cbxLocation, Label lblPlanet)
+        public void ComboBoxLocations(ComboBox cbxLocation)
         {
-            var margin = cbxLocation.Margin;
-            margin.Left = 10;
-            cbxLocation.Margin = margin;
+            //DBWerte Laden
+            DBMethoden.GetPlanet(planet, character.Location.Planet.PlanetID);
+
+
+            int länge = planet.Locations.Count();
+            for (int i = 0; i < länge; i++)
+            {
+                cbxLocation.Items.Add(planet.Locations[i]);
+                //cbxLocation.Items.Add(DBMethoden.locations[i]);
+            }
+
+            //Combo Box Eigenschaften
+            cbxLocation.BringToFront();
+            cbxLocation.DisplayMember = "LocationName";
         }
 
         //Konstruktoren

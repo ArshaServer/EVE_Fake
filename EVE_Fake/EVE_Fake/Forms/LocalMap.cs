@@ -23,7 +23,8 @@ namespace EVE_Fake.Forms
             characterId = CharId;
             
             LocalMapFrm lmf = new LocalMapFrm(lblLocationName, lblPlanetName, characterId);
-            lmf.ComboBoxLocations(cbxLocations, lblPlanetName);
+            lmf.ComboBoxLocations(cbxLocations);
+            
         }
 
         private void frmLocalMap_Load(object sender, EventArgs e)

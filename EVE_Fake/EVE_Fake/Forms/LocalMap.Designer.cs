@@ -46,7 +46,7 @@
             // 
             this.lblLocationName.AutoSize = true;
             this.lblLocationName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocationName.Location = new System.Drawing.Point(14, 73);
+            this.lblLocationName.Location = new System.Drawing.Point(14, 64);
             this.lblLocationName.Name = "lblLocationName";
             this.lblLocationName.Size = new System.Drawing.Size(94, 25);
             this.lblLocationName.TabIndex = 4;
@@ -54,9 +54,10 @@
             // 
             // cbxLocations
             // 
+            this.cbxLocations.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxLocations.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxLocations.FormattingEnabled = true;
-            this.cbxLocations.Location = new System.Drawing.Point(125, 41);
+            this.cbxLocations.Location = new System.Drawing.Point(261, 27);
             this.cbxLocations.Name = "cbxLocations";
             this.cbxLocations.Size = new System.Drawing.Size(245, 32);
             this.cbxLocations.TabIndex = 5;
@@ -65,7 +66,7 @@
             // 
             this.lblPlanetName.AutoSize = true;
             this.lblPlanetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlanetName.Location = new System.Drawing.Point(12, 36);
+            this.lblPlanetName.Location = new System.Drawing.Point(12, 27);
             this.lblPlanetName.Name = "lblPlanetName";
             this.lblPlanetName.Size = new System.Drawing.Size(107, 37);
             this.lblPlanetName.TabIndex = 6;

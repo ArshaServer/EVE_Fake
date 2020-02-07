@@ -15,6 +15,7 @@ namespace EVE_Fake
         private static Location location = new Location();
         private static Raumschiff raumschiff = new Raumschiff();
         private static MySqlConnection connection;
+        public static List<Location> locations = new List<Location>();
 
         //Extras
         /// <summary>
@@ -216,9 +217,13 @@ namespace EVE_Fake
             while (dataReaderLocations.Read())
             {
                 int locationID = dataReaderLocations.GetInt32(0);
-                GetLocation(location, locationID, false);
-                planet.Locations.Add(location);
+                Location nlocation = new Location();
+                GetLocation(nlocation, locationID, false);
+                locations.Add(nlocation);
             }
+            
+            planet.Locations.AddRange(locations);
+            locations.Clear();
 
             connection.Close();
         }
