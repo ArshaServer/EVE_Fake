@@ -10,10 +10,11 @@ namespace EVE_Fake
 {
     class TopBar
     {
-        //
+        //Extra
         public bool buttonClick;
         public int CharId;
-
+        Character character = new Character();
+        
         //MenuStrip und MenuStrip Items
         public MenuStrip mnsCharSheet = new MenuStrip();
         public ToolStripMenuItem tsiCharacter = new ToolStripMenuItem();
@@ -27,27 +28,29 @@ namespace EVE_Fake
         
 
         //Methoden
-        public void OpenAndCloseForm(Form frmToOpen, bool btnPressed)
+        public void OpenAndCloseForm(Form frmToOpen)
         {
-            if(btnPressed == true)
-            {
-                Form frm = Application.OpenForms.Cast<Form>().Last();
-                frm.Hide();
 
-                frmToOpen.Hide();
+            Form frm = Application.OpenForms.Cast<Form>().Last();
+            frm.Hide();
 
-                frmToOpen.Closed += (s, args) => frm.Close();
-                frmToOpen.Show();
-                
-                buttonClick = false;
-            }
+            frmToOpen.Hide();
+
+            frmToOpen.Closed += (s, args) => frm.Close();
+            frmToOpen.Show();
+     
         }
 
-        public TopBar(Form currentForm, int charId)
+        public TopBar(Form currentForm, int charId, Character Updatecharacter)
         {
             frm1 = currentForm;
             CharId = charId;
+            character = Updatecharacter;
 
+            //Form schließt Event
+            currentForm.FormClosed += new FormClosedEventHandler(FormClosedEvents);
+
+            //Menu Strip Eigenschaften
             mnsCharSheet.Location = new Point(0, 0);
             mnsCharSheet.Name = "mnsCharSheet";
             mnsCharSheet.Size = new Size(734, 24);
@@ -56,6 +59,8 @@ namespace EVE_Fake
             mnsCharSheet.Items.Add(tsiCharacter);
             mnsCharSheet.Items.Add(tsiMap);
 
+            //
+            // tsiCharacter
             tsiCharacter.DropDownItems.AddRange(new ToolStripItem[] {
             tsiInfo});
             tsiCharacter.Name = "tsiCharacter";
@@ -106,21 +111,26 @@ namespace EVE_Fake
         {
             buttonClick = true;
             frmGroßeMap frmNeueMap = new frmGroßeMap(CharId);
-            OpenAndCloseForm(frmNeueMap, buttonClick);
+            OpenAndCloseForm(frmNeueMap);
         }
 
         private void tsiInfo_Click(object sender, EventArgs e)
         {
             buttonClick = true;
             frmCharacter_Sheet frmChar = new frmCharacter_Sheet(CharId);
-            OpenAndCloseForm(frmChar, buttonClick);
+            OpenAndCloseForm(frmChar);
+        }
+
+        private void FormClosedEvents(object sender, FormClosedEventArgs e)
+        {
+            DBMethoden.UpdateCharacter(character.Id, character.Name, character.Kapital, character.Location.LocationID, character.Raumschiff.Raumschiff_ID);
         }
 
         private void tsiLocalMap_Click(object sender, EventArgs e)
         {
             buttonClick = true;
             Forms.frmLocalMap frmlcl = new Forms.frmLocalMap(CharId);
-            OpenAndCloseForm(frmlcl, buttonClick);
+            OpenAndCloseForm(frmlcl);
         }
         #endregion
     }

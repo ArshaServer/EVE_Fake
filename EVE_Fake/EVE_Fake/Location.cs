@@ -14,10 +14,10 @@ namespace EVE_Fake
         public Planet Planet { get; set; }
         public Markt Markt { get; set; }
 
-        //public override string ToString()
-        //{
-        //    return LocationName;
-        //}
+        public override string ToString()
+        {
+            return LocationName;
+        }
 
         public Location()
         {

@@ -12,9 +12,9 @@ namespace EVE_Fake
     {
 
         public bool LabelVisible = true;
-        public string LabelText;
         Character character = new Character();
         Planet planet = new Planet();
+
 
         /// <summary>
         /// Eigenschaften vom Label Namen der Local Map
@@ -30,11 +30,14 @@ namespace EVE_Fake
             lblPlanet.Text = character.Location.Planet.PlanetName;
         }
 
+        /// <summary>
+        /// Combo Box mit Locations vom Aktuellen Planeten Laden und Eigenschaften
+        /// </summary>
+        /// <param name="cbxLocation"></param>
         public void ComboBoxLocations(ComboBox cbxLocation)
         {
             //DBWerte Laden
             DBMethoden.GetPlanet(planet, character.Location.Planet.PlanetID);
-
 
             int länge = planet.Locations.Count();
             for (int i = 0; i < länge; i++)
@@ -48,7 +51,18 @@ namespace EVE_Fake
             cbxLocation.DisplayMember = "LocationName";
         }
 
+        public void LocationLabelNeuLaden(object sender, ComboBox cbx, Label lblLocation)
+        {
+            sender = cbx.SelectedItem;
+            lblLocation.Text = sender.ToString();
+        }
         //Konstruktoren
+
+        public LocalMapFrm(int characterid)
+        {
+            DBMethoden.GetCharacter(character, characterid);
+        }
+
         /// <summary>
         /// Mit Label 
         /// </summary>
@@ -69,5 +83,7 @@ namespace EVE_Fake
         {
             LabelEigenschaften(labelLocation, labelPlanet, HideLabel, charID);
         }
+
+        
     }
 }

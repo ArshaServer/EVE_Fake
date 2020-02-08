@@ -14,7 +14,9 @@ namespace EVE_Fake.Forms
 {
     public partial class frmLocalMap : Form
     {
-        public int characterId;
+        public static int characterId;
+        Character character = new Character();
+        LocalMapFrm lmf = new LocalMapFrm(characterId);
 
         public frmLocalMap(int CharId)
         {
@@ -22,17 +24,23 @@ namespace EVE_Fake.Forms
             
             characterId = CharId;
             
-            LocalMapFrm lmf = new LocalMapFrm(lblLocationName, lblPlanetName, characterId);
+            //Lokale Map erstellen
+            lmf.LabelEigenschaften(lblLocationName, lblPlanetName, true, characterId);
             lmf.ComboBoxLocations(cbxLocations);
-            
         }
 
         private void frmLocalMap_Load(object sender, EventArgs e)
         {
+            DBMethoden.GetCharacter(character, characterId);
             //MenuStrip
             frmLocalMap frm1 = new frmLocalMap(characterId);
-            TopBar topBarLocalMap = new TopBar(frm1, characterId);
+            TopBar topBarLocalMap = new TopBar(frm1, characterId, character);
             Controls.Add(topBarLocalMap.mnsCharSheet);
+        }
+
+        private void cbxLocations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lmf.LocationLabelNeuLaden(sender, cbxLocations, lblLocationName);
         }
     }
 }

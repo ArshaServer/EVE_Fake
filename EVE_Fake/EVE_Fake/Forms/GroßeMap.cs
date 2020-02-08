@@ -13,6 +13,8 @@ namespace EVE_Fake
     public partial class frmGroßeMap : Form
     {
         public int CharacterId;
+        Character character = new Character();
+
         public frmGroßeMap(int CharId)
         {
             InitializeComponent();
@@ -24,8 +26,9 @@ namespace EVE_Fake
 
         private void frmGroßeMap_Load(object sender, EventArgs e)
         {
+            DBMethoden.GetCharacter(character, CharacterId);
             frmGroßeMap frm1 = new frmGroßeMap(CharacterId);
-            TopBar ObenLeiste = new TopBar(frm1, CharacterId);
+            TopBar ObenLeiste = new TopBar(frm1, CharacterId, character);
             this.Controls.Add(ObenLeiste.mnsCharSheet);
 
             Raumschiff rmsch = new Raumschiff();

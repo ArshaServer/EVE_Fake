@@ -15,6 +15,7 @@ namespace EVE_Fake
     public partial class frmCharacter_Sheet : Form
     {
         public int characterID;
+        Character character = new Character();
 
         #region Methoden
         //public void LoadXml(string filename)
@@ -92,7 +93,6 @@ namespace EVE_Fake
 
         public void CharLaden()
         {
-            Character character = new Character();
             DBMethoden.GetCharacter(character, characterID);
             tbxCharName.Text = character.Name;
             tbxMoney.Text = character.Kapital.ToString();
@@ -111,7 +111,7 @@ namespace EVE_Fake
         {
             CharLaden();
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
-            TopBar charBar = new TopBar(frm1, characterID);
+            TopBar charBar = new TopBar(frm1, characterID, character);
             Controls.Add(charBar.mnsCharSheet);  
         }
 

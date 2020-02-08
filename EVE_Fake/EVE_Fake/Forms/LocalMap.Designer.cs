@@ -61,6 +61,7 @@
             this.cbxLocations.Name = "cbxLocations";
             this.cbxLocations.Size = new System.Drawing.Size(245, 32);
             this.cbxLocations.TabIndex = 5;
+            this.cbxLocations.SelectedIndexChanged += new System.EventHandler(this.cbxLocations_SelectedIndexChanged);
             // 
             // lblPlanetName
             // 
