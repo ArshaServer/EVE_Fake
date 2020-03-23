@@ -93,7 +93,7 @@ namespace EVE_Fake
 
         public void CharLaden()
         {
-            DBMethoden.GetCharacter(character, characterID);
+            character = DBMethoden.GetCharacter(characterID);
             tbxCharName.Text = character.Name;
             tbxMoney.Text = character.Kapital.ToString();
             tbxRaumschiff.Text = character.Raumschiff.Raumschiff_Name;

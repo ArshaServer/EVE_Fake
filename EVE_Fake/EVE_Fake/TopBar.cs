@@ -76,7 +76,7 @@ namespace EVE_Fake
             // 
             // tsiMap
             // 
-            tsiMap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            tsiMap.DropDownItems.AddRange(new ToolStripItem[] {
             tsiGroßeMap,
             tsiLocalMap});
             tsiMap.Name = "tsiMap";
@@ -133,5 +133,6 @@ namespace EVE_Fake
             OpenAndCloseForm(frmlcl);
         }
         #endregion
+
     }
 }

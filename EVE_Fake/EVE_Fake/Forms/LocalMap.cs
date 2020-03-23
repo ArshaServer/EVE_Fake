@@ -17,6 +17,8 @@ namespace EVE_Fake.Forms
         public static int characterId;
         Character character = new Character();
         LocalMapFrm lmf = new LocalMapFrm(characterId);
+        Location location = new Location();
+        Planet planet = new Planet();
 
         public frmLocalMap(int CharId)
         {
@@ -31,7 +33,7 @@ namespace EVE_Fake.Forms
 
         private void frmLocalMap_Load(object sender, EventArgs e)
         {
-            DBMethoden.GetCharacter(character, characterId);
+            character = DBMethoden.GetCharacter(characterId);
             //MenuStrip
             frmLocalMap frm1 = new frmLocalMap(characterId);
             TopBar topBarLocalMap = new TopBar(frm1, characterId, character);
@@ -40,7 +42,18 @@ namespace EVE_Fake.Forms
 
         private void cbxLocations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lmf.LocationLabelNeuLaden(sender, cbxLocations, lblLocationName);
+            planet = DBMethoden.GetPlanet(character.Location.Planet.PlanetID);
+
+            for (int i = 0; i < planet.Locations.Count; i++)
+            {
+                if (cbxLocations.SelectedItem.ToString() == planet.Locations[i].ToString())
+                {
+                    location = DBMethoden.GetLocation(planet.Locations[i].LocationID);
+                    character.Location = location;
+                    lblLocationName.Text = character.Location.LocationName;
+                }
+            }
+            
         }
     }
 }

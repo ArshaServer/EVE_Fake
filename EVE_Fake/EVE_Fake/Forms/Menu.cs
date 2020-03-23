@@ -33,17 +33,17 @@ namespace EVE_Fake
 
         private void btnCharacterOne_Click(object sender, EventArgs e)
         {
-            CharErstellen(0);
+            CharErstellen(1);
         }
 
         private void btnCharacterTwo_Click(object sender, EventArgs e)
         {
-            CharErstellen(1);
+            CharErstellen(2);
         }
     
         private void btnCharacterthree_Click(object sender, EventArgs e)
         {
-            CharErstellen(2);
+            CharErstellen(3);
         }
 
         private void CharErstellen(int id)

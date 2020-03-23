@@ -15,7 +15,7 @@ namespace EVE_Fake
         {
             try
             {
-                DBMethoden.GetCharacter(character, characterID);
+                character = DBMethoden.GetCharacter(characterID);
             }
             catch(Exception ex)
             {

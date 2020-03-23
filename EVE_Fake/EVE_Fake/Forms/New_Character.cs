@@ -23,8 +23,8 @@ namespace EVE_Fake
         {
             InitializeComponent();
 
-            DBMethoden.GetRaumschiff(raumschiff1, 0);
-            DBMethoden.GetRaumschiff(raumschiff2, 1);
+            raumschiff1 = DBMethoden.GetRaumschiff(0);
+            raumschiff2 = DBMethoden.GetRaumschiff(1);
             //Raumschiffe in clb Box hinzufügen
             List<string> raumschiffe = new List<string>();
             List<string> ids = new List<string>();
@@ -66,7 +66,7 @@ namespace EVE_Fake
                     raumschiffID = raumschiff2.Raumschiff_ID;
                     Cha.Raumschiff = raumschiff2;
                 }
-                DBMethoden.GetLocation(location, 0, true);
+                location = DBMethoden.GetLocation(0);
                 Cha.Location = location;
                 
                 

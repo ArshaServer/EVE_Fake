@@ -14,9 +14,11 @@ namespace EVE_Fake
         private static Markt markt = new Markt();
         private static Location location = new Location();
         private static Raumschiff raumschiff = new Raumschiff();
-        private static MySqlConnection connection;
+        private static string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=db_eve_fake;Pooling=true";
         public static List<Location> locations = new List<Location>();
-
+        
+        private static MySqlConnection connection { get; set; }
+        
         //Extras
         /// <summary>
         /// Datenbank Öffnen
@@ -26,12 +28,29 @@ namespace EVE_Fake
             try
             {
                 //MySQL Connection
-                connection = new MySqlConnection("datasource=127.0.0.1;port=3306;username=root;password=;database=db_eve_fake");
+                connection = new MySqlConnection(connectionString);
                 connection.Open();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("DB Connection Error: " + ex.Message);
+            }
+          
+        }
+
+        public static void CloseDB()
+        {
+            try
+            {
+                connection.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("DB Connection not closed: " + ex.Message);
+            }
+            finally
+            {
+                connection.Dispose();
             }
         }
 
@@ -54,7 +73,7 @@ namespace EVE_Fake
                 tbx.Text = dataReader.GetString(0);
             }
 
-            connection.Close();
+            CloseDB();
         }
 
         /// <summary>
@@ -79,7 +98,7 @@ namespace EVE_Fake
                 ausgabe = dataReader.GetString(0);
             }
 
-            connection.Close();
+            CloseDB();
             return ausgabe;
         }
 
@@ -101,9 +120,9 @@ namespace EVE_Fake
             {
                 ausgabe = dataReader.GetString(0);
             }
-            
-            
-            connection.Close();
+
+
+            CloseDB();
             return ausgabe;
         }
 
@@ -124,8 +143,8 @@ namespace EVE_Fake
             MySqlCommand sqlCommand = new MySqlCommand(updatePro, connection);
             
             sqlCommand.ExecuteNonQuery();
-           
-            connection.Close();
+
+            CloseDB();
         }
 
 
@@ -134,8 +153,9 @@ namespace EVE_Fake
         /// Bestimmtes Raumschiff aus DB laden
         /// </summary>
         /// <param name="raumschiff"></param>
-        public static void GetRaumschiff(Raumschiff raumschiff, int raumschiffID)
+        public static Raumschiff GetRaumschiff(int raumschiffID)
         {
+            Raumschiff r = new Raumschiff();
             string SelectMYSql;
             SelectMYSql = "Select * from tblraumschiff where R_id = " + raumschiffID + ";";
             OpenDB();
@@ -144,46 +164,52 @@ namespace EVE_Fake
 
             while (dataReader.Read())
             {
-                raumschiff.Raumschiff_ID = Convert.ToInt32(dataReader.GetString(0));
-                raumschiff.Raumschiff_Name = dataReader.GetString(1);
-                raumschiff.Raumschiff_Jump_schnelligkeit = dataReader.GetDouble(2);
+                r.Raumschiff_ID = Convert.ToInt32(dataReader.GetString(0));
+                r.Raumschiff_Name = dataReader.GetString(1);
+                r.Raumschiff_Jump_schnelligkeit = dataReader.GetDouble(2);
             }
 
-            connection.Close();
+            CloseDB();
+
+            return r;
         }
 
         /// <summary>
-        /// Bestimmten Markt bekommen
+        /// Liste aller Locations
         /// </summary>
         /// <param name="location"></param>
         /// <param name="locationID"></param>
-        public static void GetLocation(Location location, int locationID, bool GetThePlanet)
+        public static Location GetLocation(int locationID)
         {
+            Location l = new Location();
+            Planet p = new Planet();
+            Markt m = new Markt();
             string SelectMYSql;
-            SelectMYSql = "Select * from tbllocation where L_id = " + locationID + ";";
+            SelectMYSql = "select * from tblplanet p " +
+                "join tbllocation l on p.p_id = L_Id_Planet " +
+                "join tblMarkt m on l.L_ID_Markt=m.M_Id " +
+                "where L_id = " + locationID + ";";
+
             OpenDB();
             MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
             MySqlDataReader dataReader = cmdLesen.ExecuteReader();
 
             while(dataReader.Read())
             {
-                location.LocationID = dataReader.GetInt32(0);
-                location.LocationName = dataReader.GetString(1);
-                location.LocationBeschreibung = dataReader.GetString(2);
-                if(GetThePlanet == true)
-                {
-                    GetPlanet(planet, dataReader.GetInt32(3));
-                    location.Planet = planet;
-                }
-                else
-                {
-
-                }
-                GetMarkt(markt, dataReader.GetInt16(4));
-                location.Markt = markt;
+                m.MarktID = dataReader.GetInt16(7);
+                m.MarktName = dataReader.GetString(8);
+                p.PlanetID = dataReader.GetInt16(0);
+                p.PlanetName = dataReader.GetString(1);
+                l.LocationID = dataReader.GetInt16(2);
+                l.LocationName = dataReader.GetString(3);
+                l.LocationBeschreibung = dataReader.GetString(4);
+                l.Markt = m;
+                l.Planet = p;
             }
 
-            connection.Close();
+            CloseDB();
+
+            return l;
         }
 
         /// <summary>
@@ -191,63 +217,68 @@ namespace EVE_Fake
         /// </summary>
         /// <param name="planet"></param>
         /// <param name="planetID"></param>
-        public static void GetPlanet(Planet planet, int planetID)
+        public static Planet GetPlanet(int planetID)
         {
-            
+            Planet p = new Planet();
             string SelectMYSql;
-            string SelectMysql2;
-            SelectMYSql = "Select * from tblplanet where P_id = " + planetID + ";";
-            SelectMysql2 = "call proGetAllLocationsFromPlanet(" + planetID + ");";
+            SelectMYSql = "select * from tblplanet p " +
+                "join tbllocation l on p.p_id = L_Id_Planet " +
+                "join tblMarkt m on l.L_ID_Markt=m.M_Id " +
+                "where P_id = " + planetID + ";";
+
             OpenDB();
-            MySqlCommand cmdLesenPlanet = new MySqlCommand(SelectMYSql, connection);
-            
+            MySqlCommand cmdLesenPlanet = new MySqlCommand(SelectMYSql, connection); 
             MySqlDataReader dataReader = cmdLesenPlanet.ExecuteReader();
-            
+
+            p.PlanetID = planetID;
 
             while (dataReader.Read())
             {
-                planet.PlanetID = dataReader.GetInt32(0);
-                planet.PlanetName = dataReader.GetString(1);
+                
+                Location l = new Location();
+                Markt m = new Markt();
+               
+                p.PlanetName = dataReader.GetString(1);
+                m.MarktID = dataReader.GetInt16(7);
+                m.MarktName = dataReader.GetString(8);
+                l.LocationID = dataReader.GetInt16(2);
+                l.LocationName = dataReader.GetString(3);
+                l.LocationBeschreibung = dataReader.GetString(4);
+                l.Markt = m;
+                l.Planet = p;
+                p.Locations.Add(l);
             }
-            connection.Close();
 
-            OpenDB();
-            MySqlCommand cmdLesenLocations = new MySqlCommand(SelectMysql2, connection);
-            MySqlDataReader dataReaderLocations = cmdLesenLocations.ExecuteReader();
-            while (dataReaderLocations.Read())
-            {
-                int locationID = dataReaderLocations.GetInt32(0);
-                Location nlocation = new Location();
-                GetLocation(nlocation, locationID, false);
-                locations.Add(nlocation);
-            }
-            
-            planet.Locations.AddRange(locations);
-            locations.Clear();
+            CloseDB();
 
-            connection.Close();
+            return p;
         }
 
         /// <summary>
-        /// Bestimmten Markt bekommen
+        /// Jeden Markt bekommen
         /// </summary>
         /// <param name="Markt"></param>
         /// <param name="marktID"></param>
-        public static void GetMarkt(Markt Markt, int marktID)
+        public static List<Markt> GetAllMaerkte()
         {
+            Markt m = new Markt();
+            List<Markt> markts = new List<Markt>();
             string SelectMYSql;
-            SelectMYSql = "Select * from tblMarkt where M_id = " + marktID + ";";
+            SelectMYSql = "Select * from tblMarkt;";
             OpenDB();
             MySqlCommand cmdLesen = new MySqlCommand(SelectMYSql, connection);
             MySqlDataReader dataReader = cmdLesen.ExecuteReader();
 
             while(dataReader.Read())
             {
-                markt.MarktID = dataReader.GetInt32(0);
-                markt.MarktName = dataReader.GetString(1);
-            }
+                m.MarktID = dataReader.GetInt32(0);
+                m.MarktName = dataReader.GetString(1);
 
-            connection.Close();
+                markts.Add(m);
+            }
+            CloseDB();
+
+            return markts;
         }
 
         /// <summary>
@@ -255,8 +286,9 @@ namespace EVE_Fake
         /// </summary>
         /// <param name="character"></param>
         /// <param name="characterID"></param>
-        public static void GetCharacter(Character character, int characterID)
+        public static Character GetCharacter(int characterID)
         {
+            Character c = new Character();
             string SelectMYSql;
             SelectMYSql = "Select * from tblCharakter where C_id = " + characterID + ";";
             OpenDB();
@@ -265,16 +297,16 @@ namespace EVE_Fake
 
             while (dataReader.Read())
             {
-                character.Id = dataReader.GetInt16(0);
-                character.Name = dataReader.GetString(1);
-                character.Kapital = dataReader.GetFloat(2);
-                GetRaumschiff(raumschiff, dataReader.GetInt16(3));
-                character.Raumschiff = raumschiff;
-                GetLocation(location, dataReader.GetInt16(4), true);
-                character.Location = location;
+                c.Id = dataReader.GetInt16(0);
+                c.Name = dataReader.GetString(1);
+                c.Kapital = dataReader.GetFloat(2);
+                c.Location = GetLocation(dataReader.GetInt16(3));
+                c.Raumschiff = GetRaumschiff(dataReader.GetInt16(4));
             }
 
-            connection.Close();
+            CloseDB();
+
+            return c;
         }
     }
 }

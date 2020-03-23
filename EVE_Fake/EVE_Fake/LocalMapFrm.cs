@@ -24,7 +24,7 @@ namespace EVE_Fake
         /// <param name="charID"></param>
         public void LabelEigenschaften(Label lblLocation, Label lblPlanet, bool visible, int charID)
         {
-            DBMethoden.GetCharacter(character, charID);
+            character = DBMethoden.GetCharacter(charID);
             lblLocation.Visible = visible;
             lblLocation.Text = character.Location.LocationName;
             lblPlanet.Text = character.Location.Planet.PlanetName;
@@ -37,30 +37,29 @@ namespace EVE_Fake
         public void ComboBoxLocations(ComboBox cbxLocation)
         {
             //DBWerte Laden
-            DBMethoden.GetPlanet(planet, character.Location.Planet.PlanetID);
+            planet = DBMethoden.GetPlanet(character.Location.Planet.PlanetID);
 
             int länge = planet.Locations.Count();
             for (int i = 0; i < länge; i++)
             {
                 cbxLocation.Items.Add(planet.Locations[i]);
-                //cbxLocation.Items.Add(DBMethoden.locations[i]);
             }
 
             //Combo Box Eigenschaften
+            
             cbxLocation.BringToFront();
             cbxLocation.DisplayMember = "LocationName";
         }
 
-        public void LocationLabelNeuLaden(object sender, ComboBox cbx, Label lblLocation)
+        public void LocationLabelNeuLaden(Label lblLocation)
         {
-            sender = cbx.SelectedItem;
-            lblLocation.Text = sender.ToString();
+           
         }
         //Konstruktoren
 
         public LocalMapFrm(int characterid)
         {
-            DBMethoden.GetCharacter(character, characterid);
+            character = DBMethoden.GetCharacter(characterid);
         }
 
         /// <summary>

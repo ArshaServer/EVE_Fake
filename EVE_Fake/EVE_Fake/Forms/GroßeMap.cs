@@ -26,7 +26,7 @@ namespace EVE_Fake
 
         private void frmGroßeMap_Load(object sender, EventArgs e)
         {
-            DBMethoden.GetCharacter(character, CharacterId);
+            character = DBMethoden.GetCharacter(CharacterId);
             frmGroßeMap frm1 = new frmGroßeMap(CharacterId);
             TopBar ObenLeiste = new TopBar(frm1, CharacterId, character);
             this.Controls.Add(ObenLeiste.mnsCharSheet);
