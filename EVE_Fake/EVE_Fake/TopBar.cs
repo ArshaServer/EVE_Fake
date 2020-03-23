@@ -109,6 +109,7 @@ namespace EVE_Fake
         #region ToolStripItem Events
         public void tsiGroßeMap_Click(object sender, EventArgs e)
         {
+            DBMethoden.UpdateCharacter(character.Id, character.Name, character.Kapital, character.Location.LocationID, character.Raumschiff.Raumschiff_ID);
             buttonClick = true;
             frmGroßeMap frmNeueMap = new frmGroßeMap(CharId);
             OpenAndCloseForm(frmNeueMap);
@@ -116,6 +117,7 @@ namespace EVE_Fake
 
         private void tsiInfo_Click(object sender, EventArgs e)
         {
+            DBMethoden.UpdateCharacter(character.Id, character.Name, character.Kapital, character.Location.LocationID, character.Raumschiff.Raumschiff_ID);
             buttonClick = true;
             frmCharacter_Sheet frmChar = new frmCharacter_Sheet(CharId);
             OpenAndCloseForm(frmChar);
@@ -128,6 +130,7 @@ namespace EVE_Fake
 
         private void tsiLocalMap_Click(object sender, EventArgs e)
         {
+            DBMethoden.UpdateCharacter(character.Id, character.Name, character.Kapital, character.Location.LocationID, character.Raumschiff.Raumschiff_ID);
             buttonClick = true;
             Forms.frmLocalMap frmlcl = new Forms.frmLocalMap(CharId);
             OpenAndCloseForm(frmlcl);
