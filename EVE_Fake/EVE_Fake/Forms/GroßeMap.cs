@@ -14,21 +14,23 @@ namespace EVE_Fake
     {
         public int CharacterId;
         public Button but;
+        Timer tmrRaumschiffReise = new Timer();
         Character character = new Character();
+        Raumschiff raumschiff1 = new Raumschiff();
+        Rectangle rRaumschiff = new Rectangle();
         List<Rectangle> planeten = new List<Rectangle>();
 
         public frmGroßeMap(int CharId)
         {
+            DoubleBuffered = true;
             InitializeComponent();
 
             CharacterId = CharId;
 
             //Ausgewählter Planet Animation
-            Timer tmrRaumschiffReise = new Timer();
-
             tmrRaumschiffReise.Tick += new EventHandler(TimerEventRaumschiffReise);
 
-            tmrRaumschiffReise.Interval = 1000;
+            tmrRaumschiffReise.Interval = 10;
 
             but = btnErde;
             tmrSelectedPlanet.Start();
@@ -41,18 +43,9 @@ namespace EVE_Fake
             TopBar ObenLeiste = new TopBar(frm1, CharacterId, character);
             Controls.Add(ObenLeiste.mnsCharSheet);
 
-            Raumschiff rmsch = new Raumschiff();
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Graphics g = e.Graphics;
-
-            Planet planet = new Planet();
             List<Planet> planets = new List<Planet>();
             planets = DBMethoden.GetAllPlanets();
-           
+
             for (int i = 0; i < planets.Count; i++)
             {
                 Rectangle r = new Rectangle();
@@ -63,8 +56,21 @@ namespace EVE_Fake
                 planeten.Add(r);
             }
 
+            Raumschiff rmsch = new Raumschiff();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
+            
             g.DrawImage(Properties.Resources.Erde, planeten[0]);
             g.DrawImage(Properties.Resources.Mars, planeten[1]);
+            
+            if(raumschiff1.Visible == true)
+            {
+                g.DrawImage(Properties.Resources.Raumschiff_Transporter, rRaumschiff);
+            }
         }
 
         private void btnErde_Click(object sender, EventArgs e)
@@ -90,7 +96,46 @@ namespace EVE_Fake
 
         private void TimerEventRaumschiffReise(object sender, EventArgs e)
         {
+            bool XY = true;
+            int i1 = planeten[0].X - planeten[1].X;
+            int i2 = planeten[0].Y - planeten[1].Y;
 
+            int i3 = 0;
+            if (i1 == i2)
+            {
+                i3 = 1;
+                XY = true;
+            }
+            else if(i1 > i2)
+            {
+                i3 = i2 / i1;
+                XY = true;
+            }
+            else if(i2 > i1)
+            {
+                i3 = i1 / i2;
+                XY = false;
+            }
+             
+
+            if(i3 < 0)
+            {
+                i3 = i3 * (-1);
+            }
+
+            if(XY == true)
+            {
+                rRaumschiff.X++;
+                rRaumschiff.Y += i3;
+            }
+            else if(XY == false)
+            {
+                rRaumschiff.X += i3;
+                rRaumschiff.Y++;
+            }
+           
+
+            this.Invalidate();
         }
 
         private void frmGroßeMap_MouseDown(object sender, MouseEventArgs e)
@@ -101,11 +146,17 @@ namespace EVE_Fake
                 {
                     if (planeten[i].Contains(e.Location))
                     {
-                        MessageBox.Show("Bereich gedrückt");
+                        rRaumschiff.X = character.Location.Planet.PlanetXKoordinate;
+                        rRaumschiff.Y = character.Location.Planet.PlanetYKoordinate;
+                        rRaumschiff.Height = 30;
+                        rRaumschiff.Width = 30;
+                        raumschiff1.Visible = true;
+                        tmrRaumschiffReise.Start();
                         break;
                     }
                 }
             }
+            this.Invalidate();
         }
     }
 }

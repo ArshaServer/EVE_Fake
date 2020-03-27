@@ -14,9 +14,11 @@ namespace EVE_Fake
 
         public double Raumschiff_Jump_schnelligkeit{ get; set; }
 
+        public bool Visible { get; set; }
+
         public Raumschiff()
         {
-
+            Visible = false;
         }
 
         //public override string ToString()
