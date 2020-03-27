@@ -97,43 +97,96 @@ namespace EVE_Fake
         private void TimerEventRaumschiffReise(object sender, EventArgs e)
         {
             bool XY = true;
-            int i1 = planeten[0].X - planeten[1].X;
-            int i2 = planeten[0].Y - planeten[1].Y;
+            int i1 = rRaumschiff.X - planeten[1].X;
+            int i2 = rRaumschiff.Y - planeten[1].Y;
 
             int i3 = 0;
-            if (i1 == i2)
-            {
-                i3 = 1;
-                XY = true;
-            }
-            else if(i1 > i2)
-            {
-                i3 = i2 / i1;
-                XY = true;
-            }
-            else if(i2 > i1)
-            {
-                i3 = i1 / i2;
-                XY = false;
-            }
-             
 
-            if(i3 < 0)
+            if (i1 < 0 && i2 < 0)
             {
-                i3 = i3 * (-1);
-            }
+                if (i1 > i2)
+                {
+                    i3 = i2 / i1;
+                    rRaumschiff.X++;
+                    rRaumschiff.Y += i3;
+                }
+                else
+                {
+                    i3 = i1 / i2;
+                    rRaumschiff.X += i3;
+                    rRaumschiff.Y++;
+                }
 
-            if(XY == true)
-            {
-                rRaumschiff.X++;
-                rRaumschiff.Y += i3;
             }
-            else if(XY == false)
+            else if (i1 > 0 && i2 < 0)
             {
-                rRaumschiff.X += i3;
-                rRaumschiff.Y++;
+                if (i1 < i2)
+                {
+                    i3 = i2 / i1;
+                    rRaumschiff.X++;
+                    rRaumschiff.Y += i3;
+                }
+                else
+                {
+                    i3 = i1 / i2;
+                    rRaumschiff.X += i3;
+                    rRaumschiff.Y++;
+                }
             }
-           
+            else if (i1 > 0 && i2 > 0)
+            {
+                if (i1 < i2)
+                {
+                    i3 = i2 / i1;
+                    rRaumschiff.X--;
+                    rRaumschiff.Y -= i3;
+                }
+                else
+                {
+                    i3 = i1 / i2;
+                    rRaumschiff.X -= i3;
+                    rRaumschiff.Y--;
+                }
+
+            }
+            else if (i1 < 0 && i2 > 0)
+            {
+                if (i1 > i2)
+                {
+                    i3 = i2 / i1;
+                    rRaumschiff.X--;
+                    rRaumschiff.Y -= i3;
+                }
+                else
+                {
+                    i3 = i1 / i2;
+                    rRaumschiff.X -= i3;
+                    rRaumschiff.Y--;
+                }
+            }
+            else if (i1 == 0)
+            {
+                if (i2 > 0)
+                {
+                    rRaumschiff.Y--;
+                }
+                else
+                {
+                    rRaumschiff.Y++;
+                } 
+            }
+            else if(i2 == 0)
+            {
+
+                if (i1 > 0)
+                {
+                    rRaumschiff.X--;
+                }
+                else
+                {
+                    rRaumschiff.X++;
+                }
+            }
 
             this.Invalidate();
         }
