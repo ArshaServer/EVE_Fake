@@ -10,6 +10,8 @@ namespace EVE_Fake
     {
         public int PlanetID { get; set; }
         public string PlanetName { get; set; }
+        public int PlanetXKoordinate { get; set; }
+        public int PlanetYKoordinate { get; set; }
         public List<Location> Locations { get; set; }
 
         public Planet()

@@ -56,7 +56,7 @@ namespace EVE_Fake
                 Cha.Id = Convert.ToInt16(clbCharSlot.Text);
                 Cha.Name = tbxCharName.Text;
                 Cha.Kapital = Convert.ToSingle(tbxStartKapital.Text);
-                if(clbNewCharRaumschiffe.Text == raumschiff1.Raumschiff_Name)
+                if(clbNewCharRaumschiffe.SelectedIndex == 0)
                 {
                     raumschiffID = raumschiff1.Raumschiff_ID;
                     Cha.Raumschiff = raumschiff1;
@@ -66,7 +66,7 @@ namespace EVE_Fake
                     raumschiffID = raumschiff2.Raumschiff_ID;
                     Cha.Raumschiff = raumschiff2;
                 }
-                location = DBMethoden.GetLocation(0);
+                location = DBMethoden.GetLocation(1);
                 Cha.Location = location;
                 
                 

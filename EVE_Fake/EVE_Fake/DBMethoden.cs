@@ -38,6 +38,9 @@ namespace EVE_Fake
           
         }
 
+        /// <summary>
+        /// Datanbank schließen
+        /// </summary>
         public static void CloseDB()
         {
             try
@@ -126,7 +129,6 @@ namespace EVE_Fake
             return ausgabe;
         }
 
-
         //Alle Update Sachen
         /// <summary>
         /// Alle Character Werte mit übergabe updaten
@@ -146,7 +148,6 @@ namespace EVE_Fake
 
             CloseDB();
         }
-
 
         //Alle Get Sachen
         /// <summary>
@@ -196,13 +197,15 @@ namespace EVE_Fake
 
             while(dataReader.Read())
             {
-                m.MarktID = dataReader.GetInt16(7);
-                m.MarktName = dataReader.GetString(8);
+                m.MarktID = dataReader.GetInt16(9);
+                m.MarktName = dataReader.GetString(10);
                 p.PlanetID = dataReader.GetInt16(0);
                 p.PlanetName = dataReader.GetString(1);
-                l.LocationID = dataReader.GetInt16(2);
-                l.LocationName = dataReader.GetString(3);
-                l.LocationBeschreibung = dataReader.GetString(4);
+                p.PlanetXKoordinate = dataReader.GetInt32(2);
+                p.PlanetYKoordinate = dataReader.GetInt32(3);
+                l.LocationID = dataReader.GetInt16(4);
+                l.LocationName = dataReader.GetString(5);
+                l.LocationBeschreibung = dataReader.GetString(6);
                 l.Markt = m;
                 l.Planet = p;
             }
@@ -237,13 +240,14 @@ namespace EVE_Fake
                 
                 Location l = new Location();
                 Markt m = new Markt();
-               
                 p.PlanetName = dataReader.GetString(1);
-                m.MarktID = dataReader.GetInt16(7);
-                m.MarktName = dataReader.GetString(8);
-                l.LocationID = dataReader.GetInt16(2);
-                l.LocationName = dataReader.GetString(3);
-                l.LocationBeschreibung = dataReader.GetString(4);
+                p.PlanetXKoordinate = dataReader.GetInt32(2);
+                p.PlanetYKoordinate = dataReader.GetInt32(3);
+                m.MarktID = dataReader.GetInt16(9);
+                m.MarktName = dataReader.GetString(10);
+                l.LocationID = dataReader.GetInt16(4);
+                l.LocationName = dataReader.GetString(5);
+                l.LocationBeschreibung = dataReader.GetString(6);
                 l.Markt = m;
                 l.Planet = p;
                 p.Locations.Add(l);
@@ -252,6 +256,32 @@ namespace EVE_Fake
             CloseDB();
 
             return p;
+        }
+
+        /// <summary>
+        /// Alle Planeten Liste
+        /// </summary>
+        /// <returns></returns>
+        public static List<Planet> GetAllPlanets()
+        {
+            List<Planet> ps = new List<Planet>();
+            Planet p = new Planet();
+            string SelectMYSql;
+            SelectMYSql = "select * from tblplanet";
+            OpenDB();
+            MySqlCommand cmdLesenPlanet = new MySqlCommand(SelectMYSql, connection);
+            MySqlDataReader dataReader = cmdLesenPlanet.ExecuteReader();
+            int zähler = 1;
+
+            while (dataReader.Read())
+            {
+                p = GetPlanet(zähler);
+                ps.Add(p);
+            }
+
+            CloseDB();
+
+            return ps;
         }
 
         /// <summary>

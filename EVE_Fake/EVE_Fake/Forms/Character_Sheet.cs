@@ -112,7 +112,8 @@ namespace EVE_Fake
             CharLaden();
             frmCharacter_Sheet frm1 = new frmCharacter_Sheet(characterID);
             TopBar charBar = new TopBar(frm1, characterID, character);
-            Controls.Add(charBar.mnsCharSheet);  
+            Controls.Add(charBar.mnsCharSheet);
+            DBMethoden.GetAllPlanets();
         }
 
         //protected override void OnPaint(PaintEventArgs e)
