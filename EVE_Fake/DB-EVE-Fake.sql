@@ -11,6 +11,7 @@ drop table tblraumschiff;
 drop table tblmarkt;
 drop table tblPro_Markt_Auftraege;
 drop table tblMarkt_Autraege; 
+drop table tblitem;
 
 CREATE TABLE db_eve_fake.tblcharakter (
   C_id INT NOT NULL auto_increment,
@@ -36,6 +37,8 @@ Create Table if not Exists tblItem(
 Create Table if not Exists db_eve_fake.tblPlanet(
 	P_Id int not null auto_increment,
     P_Name varchar(40),
+    P_XKoordinate int,
+    P_YKoordinate int,
 	Primary Key(P_Id)
 )
 ENGINE = InnoDB
@@ -90,13 +93,13 @@ insert into tblcharakter(C_Name, C_Money, C_Location_ID, C_Raumschiff_ID) values
 insert into tblcharakter(C_Name, C_Money, C_Location_ID, C_Raumschiff_ID) values('FinnZwei', 23423, 1, 1);
 insert into tblraumschiff(R_Name, R_Schnelligkeit_Jumps) values('Frachter', 50);
 insert into tblraumschiff(R_Name, R_Schnelligkeit_Jumps) values('Kapsel', 100);
-insert into tblPLanet(P_Name) values("Erde");
-insert into tblPlanet(P_Name) values("Test Planet");
+insert into tblPLanet(P_Name, P_XKoordinate, P_YKoordinate) values("Erde", 100, 100);
+insert into tblPlanet(P_Name, P_XKoordinate, P_YKoordinate) values("Test Planet", 120, 80);
 insert into tbllocation(L_Name, L_Beschreibung, L_ID_Planet, L_ID_Markt) values('Erde Boden', 'Kole Land', 1, 1);
 insert into tbllocation(L_Name, L_Beschreibung, L_ID_Planet, L_ID_Markt) values('Erde Boden Zwei', 'Kole Land', 2, 1);
 insert into tblmarkt values(0, 'Erden Markt');
 
-select L.L_Name 
+/*select L.L_Name 
     from tbllocation L 
     join tblcharakter C 
     on C.C_Location_ID = L.L_ID
@@ -108,4 +111,8 @@ join tblplanet p on p.P_ID = l.L_ID_Planet;
 
 select * from tblplanet p
 join tbllocation l on p.p_id = L_Id_Planet
-where P_id = 0;
+join tblMarkt m on l.L_ID_Markt=m.M_Id
+where P_id = 1;
+
+select * from tblcharakter 
+where C_id = 1;*/

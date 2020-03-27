@@ -13,6 +13,7 @@ namespace EVE_Fake
     public partial class frmGroßeMap : Form
     {
         public int CharacterId;
+        public Button but;
         Character character = new Character();
 
         public frmGroßeMap(int CharId)
@@ -20,7 +21,15 @@ namespace EVE_Fake
             InitializeComponent();
 
             CharacterId = CharId;
+
             //Ausgewählter Planet Animation
+            Timer tmrRaumschiffReise = new Timer();
+
+            tmrRaumschiffReise.Tick += new EventHandler(TimerEventRaumschiffReise);
+
+            tmrRaumschiffReise.Interval = 1000;
+
+            but = btnErde;
             tmrSelectedPlanet.Start();
         }
 
@@ -29,9 +38,15 @@ namespace EVE_Fake
             character = DBMethoden.GetCharacter(CharacterId);
             frmGroßeMap frm1 = new frmGroßeMap(CharacterId);
             TopBar ObenLeiste = new TopBar(frm1, CharacterId, character);
-            this.Controls.Add(ObenLeiste.mnsCharSheet);
+            Controls.Add(ObenLeiste.mnsCharSheet);
 
             Raumschiff rmsch = new Raumschiff();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
         }
 
         private void btnErde_Click(object sender, EventArgs e)
@@ -41,19 +56,22 @@ namespace EVE_Fake
 
         private void tmrSelectedPlanet_Tick(object sender, EventArgs e)
         {
-            btnErde.Height = 45;
-            btnErde.Width = 45;
+            but.Height = 45;
+            but.Width = 45;
 
-            tmrSelctedPlanetSmal.Start();
-            
+            tmrSelectedPlanetBig.Start();
         }
 
-        private void tmrSelctedPlanetSmal_Tick(object sender, EventArgs e)
+        private void tmrSelectedPlanetBig_Tick_1(object sender, EventArgs e)
         {
-            btnErde.Height = 35;
-            btnErde.Width = 35;
+            but.Height = 35;
+            but.Width = 35;
 
-            tmrSelctedPlanetSmal.Stop();
+            tmrSelectedPlanetBig.Stop();
+        }
+
+        private void TimerEventRaumschiffReise(object sender, EventArgs e)
+        {
 
         }
     }

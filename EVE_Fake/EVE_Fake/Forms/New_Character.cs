@@ -23,8 +23,8 @@ namespace EVE_Fake
         {
             InitializeComponent();
 
-            raumschiff1 = DBMethoden.GetRaumschiff(0);
-            raumschiff2 = DBMethoden.GetRaumschiff(1);
+            raumschiff1 = DBMethoden.GetRaumschiff(1);
+            raumschiff2 = DBMethoden.GetRaumschiff(2);
             //Raumschiffe in clb Box hinzufügen
             List<string> raumschiffe = new List<string>();
             List<string> ids = new List<string>();
@@ -73,19 +73,19 @@ namespace EVE_Fake
                 //Character ID Konvertieren
                 if(Cha.Id == 1)
                 {
-                    CharacterID = 0;
+                    CharacterID = 1;
                     //Ignore
                     charfile = "CharacterOne.xml";
                 }
                 else if(Cha.Id == 2)
                 {
-                    CharacterID = 1;
+                    CharacterID = 2;
                     //Ignore
                     charfile = "CharacterTwo.xml";
                 }
                 else if(Cha.Id == 3)
                 {
-                    CharacterID = 2;
+                    CharacterID = 3;
                     //Ignore
                     charfile = "Characterthree.xml";
                 }

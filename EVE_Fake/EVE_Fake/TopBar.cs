@@ -30,7 +30,7 @@ namespace EVE_Fake
         //Methoden
         public void OpenAndCloseForm(Form frmToOpen)
         {
-
+            frmToOpen.StartPosition = FormStartPosition.CenterScreen;
             Form frm = Application.OpenForms.Cast<Form>().Last();
             frm.Hide();
 

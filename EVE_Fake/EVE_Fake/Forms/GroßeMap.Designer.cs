@@ -32,7 +32,7 @@
             this.btnMars = new System.Windows.Forms.Button();
             this.btnErde = new System.Windows.Forms.Button();
             this.tmrSelectedPlanet = new System.Windows.Forms.Timer(this.components);
-            this.tmrSelctedPlanetSmal = new System.Windows.Forms.Timer(this.components);
+            this.tmrSelectedPlanetBig = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnMars
@@ -43,7 +43,7 @@
             this.btnMars.CausesValidation = false;
             this.btnMars.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMars.Image = global::EVE_Fake.Properties.Resources.Mars;
-            this.btnMars.Location = new System.Drawing.Point(415, 154);
+            this.btnMars.Location = new System.Drawing.Point(692, 469);
             this.btnMars.Name = "btnMars";
             this.btnMars.Size = new System.Drawing.Size(30, 30);
             this.btnMars.TabIndex = 1;
@@ -57,9 +57,9 @@
             this.btnErde.CausesValidation = false;
             this.btnErde.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnErde.Image = global::EVE_Fake.Properties.Resources.Erde;
-            this.btnErde.Location = new System.Drawing.Point(324, 233);
+            this.btnErde.Location = new System.Drawing.Point(12, 12);
             this.btnErde.Name = "btnErde";
-            this.btnErde.Size = new System.Drawing.Size(35, 35);
+            this.btnErde.Size = new System.Drawing.Size(30, 30);
             this.btnErde.TabIndex = 0;
             this.btnErde.UseVisualStyleBackColor = true;
             this.btnErde.Click += new System.EventHandler(this.btnErde_Click);
@@ -69,16 +69,16 @@
             this.tmrSelectedPlanet.Interval = 1000;
             this.tmrSelectedPlanet.Tick += new System.EventHandler(this.tmrSelectedPlanet_Tick);
             // 
-            // tmrSelctedPlanetSmal
+            // tmrSelectedPlanetBig
             // 
-            this.tmrSelctedPlanetSmal.Interval = 500;
-            this.tmrSelctedPlanetSmal.Tick += new System.EventHandler(this.tmrSelctedPlanetSmal_Tick);
+            this.tmrSelectedPlanetBig.Interval = 500;
+            this.tmrSelectedPlanetBig.Tick += new System.EventHandler(this.tmrSelectedPlanetBig_Tick_1);
             // 
             // frmGroßeMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 514);
+            this.ClientSize = new System.Drawing.Size(734, 511);
             this.Controls.Add(this.btnMars);
             this.Controls.Add(this.btnErde);
             this.Name = "frmGroßeMap";
@@ -93,6 +93,6 @@
         private System.Windows.Forms.Button btnErde;
         private System.Windows.Forms.Button btnMars;
         private System.Windows.Forms.Timer tmrSelectedPlanet;
-        private System.Windows.Forms.Timer tmrSelctedPlanetSmal;
+        private System.Windows.Forms.Timer tmrSelectedPlanetBig;
     }
 }

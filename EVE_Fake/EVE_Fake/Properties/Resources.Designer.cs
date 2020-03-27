@@ -102,5 +102,15 @@ namespace EVE_Fake.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Raumschiff_Transporter {
+            get {
+                object obj = ResourceManager.GetObject("Raumschiff_Transporter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
