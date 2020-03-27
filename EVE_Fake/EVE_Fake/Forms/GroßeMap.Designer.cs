@@ -84,6 +84,7 @@
             this.Name = "frmGroßeMap";
             this.Text = "GroßeMap";
             this.Load += new System.EventHandler(this.frmGroßeMap_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmGroßeMap_MouseDown);
             this.ResumeLayout(false);
 
         }

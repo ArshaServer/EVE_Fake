@@ -15,6 +15,7 @@ namespace EVE_Fake
         public int CharacterId;
         public Button but;
         Character character = new Character();
+        List<Rectangle> planeten = new List<Rectangle>();
 
         public frmGroßeMap(int CharId)
         {
@@ -47,6 +48,23 @@ namespace EVE_Fake
         {
             base.OnPaint(e);
             Graphics g = e.Graphics;
+
+            Planet planet = new Planet();
+            List<Planet> planets = new List<Planet>();
+            planets = DBMethoden.GetAllPlanets();
+           
+            for (int i = 0; i < planets.Count; i++)
+            {
+                Rectangle r = new Rectangle();
+                r.X = planets[i].PlanetXKoordinate;
+                r.Y = planets[i].PlanetYKoordinate;
+                r.Height = 30;
+                r.Width = 30;
+                planeten.Add(r);
+            }
+
+            g.DrawImage(Properties.Resources.Erde, planeten[0]);
+            g.DrawImage(Properties.Resources.Mars, planeten[1]);
         }
 
         private void btnErde_Click(object sender, EventArgs e)
@@ -73,6 +91,21 @@ namespace EVE_Fake
         private void TimerEventRaumschiffReise(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmGroßeMap_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                for (int i = 0; i < planeten.Count; i++)
+                {
+                    if (planeten[i].Contains(e.Location))
+                    {
+                        MessageBox.Show("Bereich gedrückt");
+                        break;
+                    }
+                }
+            }
         }
     }
 }

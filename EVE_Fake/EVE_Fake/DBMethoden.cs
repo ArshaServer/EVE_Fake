@@ -265,7 +265,6 @@ namespace EVE_Fake
         public static List<Planet> GetAllPlanets()
         {
             List<Planet> ps = new List<Planet>();
-            Planet p = new Planet();
             string SelectMYSql;
             SelectMYSql = "select * from tblplanet";
             OpenDB();
@@ -275,8 +274,10 @@ namespace EVE_Fake
 
             while (dataReader.Read())
             {
+                Planet p = new Planet();
                 p = GetPlanet(zähler);
                 ps.Add(p);
+                zähler++;
             }
 
             CloseDB();
