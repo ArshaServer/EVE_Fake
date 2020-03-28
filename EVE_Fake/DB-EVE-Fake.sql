@@ -53,14 +53,14 @@ CREATE TABLE IF NOT EXISTS db_eve_fake.tblRaumschiff (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS db_eve_fake.tblMarkt (
-  M_Id INT NOT NULL auto_increment,
+  M_Id INT auto_increment,
   M_Name varchar(50),
   PRIMARY KEY (M_Id)
 )
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS db_eve_fake.tblLocation (
-	L_ID INT NOT NULL auto_increment,
+	L_ID INT auto_increment,
     L_Name varchar(50),
     L_Beschreibung varchar(300),
     L_ID_Planet int,
@@ -94,12 +94,16 @@ insert into tblcharakter(C_Name, C_Money, C_Location_ID, C_Raumschiff_ID) values
 insert into tblraumschiff(R_Name, R_Schnelligkeit_Jumps) values('Frachter', 50);
 insert into tblraumschiff(R_Name, R_Schnelligkeit_Jumps) values('Kapsel', 100);
 insert into tblPLanet(P_Name, P_XKoordinate, P_YKoordinate) values("Erde", 100, 100);
-insert into tblPlanet(P_Name, P_XKoordinate, P_YKoordinate) values("Test Planet", 120, 80);
+insert into tblPlanet(P_Name, P_XKoordinate, P_YKoordinate) values("Test Planet", 320, 255);
+insert into tblPlanet(P_Name, P_XKoordinate, P_YKoordinate) values("Cooler Nummer E", 230, 450);
+insert into tblPlanet(P_Name, P_XKoordinate, P_YKoordinate) values("Blue Neger", 453, 230);
 insert into tbllocation(L_Name, L_Beschreibung, L_ID_Planet, L_ID_Markt) values('Erde Boden', 'Kole Land', 1, 1);
+insert into tbllocation(L_Name, L_Beschreibung, L_ID_Planet, L_ID_Markt) values('Erde Boden', 'Kole Land', 4, 1);
+insert into tbllocation(L_Name, L_Beschreibung, L_ID_Planet, L_ID_Markt) values('Coole Planet Boden', 'KWeweLand', 3, 1);
 insert into tbllocation(L_Name, L_Beschreibung, L_ID_Planet, L_ID_Markt) values('Erde Boden Zwei', 'Kole Land', 2, 1);
 insert into tblmarkt values(0, 'Erden Markt');
 
-/*select L.L_Name 
+select L.L_Name 
     from tbllocation L 
     join tblcharakter C 
     on C.C_Location_ID = L.L_ID
@@ -111,8 +115,7 @@ join tblplanet p on p.P_ID = l.L_ID_Planet;
 
 select * from tblplanet p
 join tbllocation l on p.p_id = L_Id_Planet
-join tblMarkt m on l.L_ID_Markt=m.M_Id
-where P_id = 1;
+join tblMarkt m on l.L_ID_Markt=m.M_Id;
 
-select * from tblcharakter 
-where C_id = 1;*/
+
+select * from tblplanet;

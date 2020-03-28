@@ -17,7 +17,9 @@ namespace EVE_Fake
         Timer tmrRaumschiffReise = new Timer();
         Character character = new Character();
         Raumschiff raumschiff1 = new Raumschiff();
+        int planetFlug;
         Rectangle rRaumschiff = new Rectangle();
+        List<Planet> planets = new List<Planet>();
         List<Rectangle> planeten = new List<Rectangle>();
 
         public frmGroßeMap(int CharId)
@@ -32,7 +34,7 @@ namespace EVE_Fake
 
             tmrRaumschiffReise.Interval = 10;
 
-            but = btnErde;
+        
             tmrSelectedPlanet.Start();
         }
 
@@ -43,7 +45,6 @@ namespace EVE_Fake
             TopBar ObenLeiste = new TopBar(frm1, CharacterId, character);
             Controls.Add(ObenLeiste.mnsCharSheet);
 
-            List<Planet> planets = new List<Planet>();
             planets = DBMethoden.GetAllPlanets();
 
             for (int i = 0; i < planets.Count; i++)
@@ -66,8 +67,10 @@ namespace EVE_Fake
             
             g.DrawImage(Properties.Resources.Erde, planeten[0]);
             g.DrawImage(Properties.Resources.Mars, planeten[1]);
-            
-            if(raumschiff1.Visible == true)
+            g.DrawImage(Properties.Resources.Mars, planeten[2]);
+            g.DrawImage(Properties.Resources.Mars, planeten[3]);
+
+            if (raumschiff1.Visible == true)
             {
                 g.DrawImage(Properties.Resources.Raumschiff_Transporter, rRaumschiff);
             }
@@ -80,25 +83,18 @@ namespace EVE_Fake
 
         private void tmrSelectedPlanet_Tick(object sender, EventArgs e)
         {
-            but.Height = 45;
-            but.Width = 45;
-
-            tmrSelectedPlanetBig.Start();
+            
         }
 
         private void tmrSelectedPlanetBig_Tick_1(object sender, EventArgs e)
         {
-            but.Height = 35;
-            but.Width = 35;
-
-            tmrSelectedPlanetBig.Stop();
+          
         }
 
         private void TimerEventRaumschiffReise(object sender, EventArgs e)
         {
-            bool XY = true;
-            int i1 = rRaumschiff.X - planeten[1].X;
-            int i2 = rRaumschiff.Y - planeten[1].Y;
+            int i1 = rRaumschiff.X - planeten[planetFlug].X;
+            int i2 = rRaumschiff.Y - planeten[planetFlug].Y;
 
             int i3 = 0;
 
@@ -188,6 +184,13 @@ namespace EVE_Fake
                 }
             }
 
+            if (rRaumschiff.Contains(planeten[planetFlug].Location))
+            {
+                raumschiff1.Visible = false;
+                tmrRaumschiffReise.Stop();
+                character.Location.Planet = planets[planetFlug];
+            }
+
             this.Invalidate();
         }
 
@@ -204,11 +207,13 @@ namespace EVE_Fake
                         rRaumschiff.Height = 30;
                         rRaumschiff.Width = 30;
                         raumschiff1.Visible = true;
+                        planetFlug = i;
                         tmrRaumschiffReise.Start();
                         break;
                     }
                 }
             }
+
             this.Invalidate();
         }
     }
