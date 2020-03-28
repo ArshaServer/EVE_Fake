@@ -233,13 +233,13 @@ namespace EVE_Fake
             MySqlCommand cmdLesenPlanet = new MySqlCommand(SelectMYSql, connection); 
             MySqlDataReader dataReader = cmdLesenPlanet.ExecuteReader();
 
-            p.PlanetID = planetID;
+            
 
             while (dataReader.Read())
-            {
-                
+            {   
                 Location l = new Location();
                 Markt m = new Markt();
+                p.PlanetID = planetID;
                 p.PlanetName = dataReader.GetString(1);
                 p.PlanetXKoordinate = dataReader.GetInt32(2);
                 p.PlanetYKoordinate = dataReader.GetInt32(3);

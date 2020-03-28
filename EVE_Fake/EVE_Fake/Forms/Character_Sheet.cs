@@ -17,47 +17,6 @@ namespace EVE_Fake
         public int characterID;
         Character character = new Character();
 
-        #region Methoden
-        //public void LoadXml(string filename)
-        //{
-        //    if(File.Exists(filename))
-        //    {
-        //        XmlSerializer xs = new XmlSerializer(typeof(Character));
-        //        FileStream read = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read);
-        //        Character cac = (Character)xs.Deserialize(read);
-
-        //        tbxCharName.Text = cac.Name;
-        //        tbxMoney.Text = cac.Kapital.ToString();
-        //        tbxRaumschiff.Text = cac.Raumschiff;
-        //        tbxLocation.Text = cac.Location;
-        //        string id = cac.Id;
-
-        //        read.Close();
-        //    }
-        //    else
-        //    {
-                
-        //    }
-          
-        //}
-
-        //public void ReadTxt()
-        //{
-        //    StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
-
-        //    string CharName = sr.ReadLine();
-        //    string Wert = sr.ReadLine();
-        //    string Raumschiff = sr.ReadLine();
-        //    string Location = sr.ReadLine();
-
-        //    tbxCharName.Text = CharName;
-        //    tbxMoney.Text = Wert;
-        //    tbxRaumschiff.Text = Raumschiff;
-        //    tbxLocation.Text = Location;
-
-        //    sr.Close();
-        //}
-
         public void AsteroidPlusEinGeld()
         {
             StreamReader sr = new StreamReader(@"C:\Users\Finn Pittermann\Documents\GitHub\EVE_Fake\CharName.txt");
@@ -97,9 +56,8 @@ namespace EVE_Fake
             tbxCharName.Text = character.Name;
             tbxMoney.Text = character.Kapital.ToString();
             tbxRaumschiff.Text = character.Raumschiff.Raumschiff_Name;
-            tbxLocation.Text = character.Location.LocationName;
+            tbxLocation.Text = character.Location.Planet.PlanetName + "/" + character.Location.LocationName;
         }
-#endregion
 
         public frmCharacter_Sheet(int CharId)
         {

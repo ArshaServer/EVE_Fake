@@ -52,6 +52,7 @@
             this.Text = "GroßeMap";
             this.Load += new System.EventHandler(this.frmGroßeMap_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmGroßeMap_MouseDown);
+            this.MouseHover += new System.EventHandler(this.frmGroßeMap_MouseHover);
             this.ResumeLayout(false);
 
         }
